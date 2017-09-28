@@ -7,9 +7,7 @@
     <packaging>pom</packaging>
 
     <modules>
-
         <module>Collections_Pro</module>
-
     </modules>
 
     <properties>

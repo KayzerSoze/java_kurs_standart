@@ -1,9 +1,7 @@
 <project>
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>Collections_Pro</artifactId>
     <version>1.0</version>
-
     <packaging>pom</packaging>
     <parent>
         <groupId>ru.skorikov</groupId>
