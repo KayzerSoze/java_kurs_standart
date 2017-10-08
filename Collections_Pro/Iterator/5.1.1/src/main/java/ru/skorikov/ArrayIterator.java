@@ -39,16 +39,10 @@ public class ArrayIterator implements Iterator {
     public ArrayIterator(int[][] value) {
         this.value = value;
     }
-
+    //Работает при условии симметрии массива.
     @Override
     public boolean hasNext() {
-        int num = 0;
-        for (int[] n : value) {
-            for (int m : n) {
-                num++;
-            }
-        }
-        return num > iter;
+        return iter < value.length * value[0].length;
     }
 
     @Override
@@ -65,4 +59,5 @@ public class ArrayIterator implements Iterator {
         iter++;
         return num;
     }
+
 }
