@@ -23,8 +23,6 @@ public class SimpleNumberIteratorTest {
         int[] num = new int[]{1, 4, 13};
         SimpleNumberIterator itr = new SimpleNumberIterator(num);
 
-        itr.next();
-        itr.next();
         int test = (int) itr.next();
 
         Assert.assertEquals(test, 13);

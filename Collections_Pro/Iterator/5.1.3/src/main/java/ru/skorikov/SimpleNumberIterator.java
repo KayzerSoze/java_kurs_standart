@@ -50,7 +50,6 @@ public class SimpleNumberIterator implements Iterator {
             for (int j = 0; j < simpeArray.length; j++) {
                 if (numbers[i] == simpeArray[j]) {
                     isNext = true;
-                    index = i;
                     break;
                 }
             }
@@ -65,6 +64,21 @@ public class SimpleNumberIterator implements Iterator {
 
     @Override
     public Object next() {
+        boolean isTrue = false;
+        for (int i = index; i < numbers.length;) {
+            for (int j = 0; j < simpeArray.length; j++) {
+                if (numbers[i] == simpeArray[j]) {
+                    index = i;
+                    isTrue = true;
+                    break;
+                }
+            }
+            if (isTrue) {
+                break;
+            } else {
+                i++;
+            }
+        }
         return numbers[index++];
     }
 }
