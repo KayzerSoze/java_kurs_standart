@@ -35,7 +35,6 @@ public class EvenArrayIterator implements Iterator {
         for (int i = index; i < array.length; i++) {
             if (array[i] % 2 == 0) {
                 isNext = true;
-                index = i;
                 break;
             }
         }
@@ -44,6 +43,14 @@ public class EvenArrayIterator implements Iterator {
 
     @Override
     public Object next() {
+        for (int i = index; i < array.length;) {
+            if (array[i] % 2 == 0) {
+                index = i;
+                break;
+            } else {
+                i++;
+            }
+        }
         return array[index++];
     }
 
