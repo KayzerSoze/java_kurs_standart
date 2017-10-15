@@ -1,6 +1,7 @@
 package ru.skorikov;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  * Created with IntelliJ IDEA.
@@ -35,6 +36,7 @@ public class EvenArrayIterator implements Iterator {
         for (int i = index; i < array.length; i++) {
             if (array[i] % 2 == 0) {
                 isNext = true;
+                index = i;
                 break;
             }
         }
@@ -43,15 +45,13 @@ public class EvenArrayIterator implements Iterator {
 
     @Override
     public Object next() {
-        for (int i = index; i < array.length;) {
-            if (array[i] % 2 == 0) {
-                index = i;
-                break;
-            } else {
-                i++;
-            }
+        int returnInt = 0;
+        if (hasNext()) {
+            returnInt = array[index++];
+        } else {
+            throw new NoSuchElementException();
         }
-        return array[index++];
+        return returnInt;
     }
 
 }
