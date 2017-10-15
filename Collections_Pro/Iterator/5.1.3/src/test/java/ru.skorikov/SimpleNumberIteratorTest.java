@@ -3,6 +3,7 @@ package ru.skorikov;
 import org.junit.Assert;
 import org.junit.Test;
 
+import static org.hamcrest.core.Is.is;
 
 
 /**
@@ -23,9 +24,9 @@ public class SimpleNumberIteratorTest {
         int[] num = new int[]{1, 4, 13};
         SimpleNumberIterator itr = new SimpleNumberIterator(num);
 
-        int test = (int) itr.next();
+        boolean test = itr.hasNext();
 
-        Assert.assertEquals(test, 13);
+        Assert.assertTrue(test);
     }
 
     /**
@@ -39,6 +40,19 @@ public class SimpleNumberIteratorTest {
         boolean test = itr.hasNext();
 
         Assert.assertFalse(test);
+    }
+    /**
+     * Найдем простое число в массиве.
+     */
+    @Test
+    public void whenSimpleNumberInArrayWhenReturnNumber() {
+        int[] num = new int[]{1, 4, 13};
+        SimpleNumberIterator itr = new SimpleNumberIterator(num);
+
+        int result = (int) itr.next();
+        int searchNumber = 13;
+
+        Assert.assertThat(result, is(searchNumber));
     }
 
 }

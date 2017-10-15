@@ -1,6 +1,7 @@
 package ru.skorikov;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  * Created with IntelliJ IDEA.
@@ -50,6 +51,7 @@ public class SimpleNumberIterator implements Iterator {
             for (int j = 0; j < simpeArray.length; j++) {
                 if (numbers[i] == simpeArray[j]) {
                     isNext = true;
+                    index = i;
                     break;
                 }
             }
@@ -64,21 +66,13 @@ public class SimpleNumberIterator implements Iterator {
 
     @Override
     public Object next() {
-        boolean isTrue = false;
-        for (int i = index; i < numbers.length;) {
-            for (int j = 0; j < simpeArray.length; j++) {
-                if (numbers[i] == simpeArray[j]) {
-                    index = i;
-                    isTrue = true;
-                    break;
-                }
-            }
-            if (isTrue) {
-                break;
-            } else {
-                i++;
-            }
+        int returnInt = 0;
+        if (hasNext()) {
+            returnInt = numbers[index++];
+        } else {
+            throw new NoSuchElementException();
         }
-        return numbers[index++];
+        return returnInt;
     }
+
 }
