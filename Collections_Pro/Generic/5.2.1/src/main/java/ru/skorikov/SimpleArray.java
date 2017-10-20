@@ -1,14 +1,15 @@
 package ru.skorikov;
 
+
 /**
  * Created with IntelliJ IDEA.
  *
+ * @param <T> Параметр.
  * @ author: Alex_Skorikov.
  * @ date: 09.10.17
  * @ version: java_kurs_standart
  * 5.2.1. Реализовать SimpleArray<T>.
  * Параметризованный класс.
- * @param <T> Параметр.
  */
 public class SimpleArray<T> {
 
@@ -37,7 +38,11 @@ public class SimpleArray<T> {
      * @param value элемент.
      */
     public void add(T value) {
-        this.objects[index++] = value;
+        if (index < objects.length) {
+            this.objects[index++] = value;
+        } else {
+            throw new ArrayIndexOutOfBoundsException();
+        }
     }
 
     /**
@@ -47,7 +52,11 @@ public class SimpleArray<T> {
      * @return элемент.
      */
     public T get(int position) {
-        return (T) this.objects[position];
+        if (position < objects.length) {
+            return (T) this.objects[position];
+        } else {
+            throw new ArrayIndexOutOfBoundsException();
+        }
     }
 
     /**
@@ -57,7 +66,11 @@ public class SimpleArray<T> {
      * @param value элемент.
      */
     public void update(int index, T value) {
-        objects[index] = value;
+        if (index < objects.length) {
+            objects[index] = value;
+        } else {
+            throw new ArrayIndexOutOfBoundsException();
+        }
     }
 
     /**
@@ -66,11 +79,12 @@ public class SimpleArray<T> {
      * @param value элемент.
      */
     public void delete(T value) {
-        for (int i = 0; i < objects.length - 1; i++) {
+        for (int i = 0; i < objects.length; i++) {
             if (objects[i] != null && objects[i].equals(value)) {
                 objects[i] = null;
                 System.arraycopy(this.objects, i + 1,
                         this.objects, i, this.objects.length - 1 - i);
+                objects[objects.length - 1] = null;
             }
         }
     }
