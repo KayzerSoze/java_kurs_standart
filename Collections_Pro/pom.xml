@@ -12,6 +12,7 @@
     <modules>
         <module>Iterator</module>
         <module>Generic</module>
+        <module>List</module>
     </modules>
 
 </project>
