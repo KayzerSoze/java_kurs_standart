@@ -8,10 +8,7 @@ package ru.skorikov;
  * @ version: java_kurs_standart
  */
 public class Role extends Base {
-    /**
-     * Поле класса Id.
-     */
-    private String id;
+
     /**
      * Поле класса role.
      */
@@ -24,7 +21,7 @@ public class Role extends Base {
      * @param role role.
      */
     public Role(String id, String role) {
-        this.id = id;
+        super(id);
         this.role = role;
     }
 

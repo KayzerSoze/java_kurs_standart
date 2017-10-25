@@ -9,6 +9,20 @@ package ru.skorikov;
  * Абстрактынй класс Base.
  */
 public abstract class Base {
+    /**
+     * Поле класса Id.
+     */
+    public String id;
+
+    /**
+     * Констуктор.
+     *
+     * @param id
+     */
+
+    public Base(String id) {
+        this.id = id;
+    }
 
     /**
      * Получить Id.

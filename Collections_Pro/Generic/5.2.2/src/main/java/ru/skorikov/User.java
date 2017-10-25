@@ -9,10 +9,7 @@ package ru.skorikov;
  * Класс User наследник Base.
  */
 public class User extends Base {
-    /**
-     * Поле Id класса.
-     */
-    private String id;
+
     /**
      * Поле имя.
      */
@@ -25,12 +22,13 @@ public class User extends Base {
      * @param name имя.
      */
     public User(String id, String name) {
-        this.id = id;
+        super(id);
         this.name = name;
     }
 
     /**
      * Получить имя.
+     *
      * @return имя объекта.
      */
     public String getName() {
@@ -39,6 +37,7 @@ public class User extends Base {
 
     /**
      * Задать имя.
+     *
      * @param name имя объекта.
      */
     public void setName(String name) {
