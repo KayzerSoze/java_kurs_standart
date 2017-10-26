@@ -1,17 +1,19 @@
 package ru.skorikov;
 
 
+import java.util.Arrays;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  * Created with IntelliJ IDEA.
  *
- * @ author: Alex_Skorikov.
- * @ date: 23.10.17
- * @ version: java_kurs_standart
  * @param <E> параметр класса.
  *
  * Создать динамический список на базе массива.
+ * @ author: Alex_Skorikov.
+ * @ date: 23.10.17
+ * @ version: java_kurs_standart
  */
 public class SimpleArrayContainer<E> implements Iterable<E> {
     /**
@@ -44,13 +46,9 @@ public class SimpleArrayContainer<E> implements Iterable<E> {
         if (index < container.length) {
             container[index++] = value;
         } else {
-            Object[] newContainer = new Object[container.length * 2];
-            System.arraycopy(container, 0, newContainer, 0, container.length);
-            container = newContainer;
+            container = Arrays.copyOf(container, container.length * 2);
             container[index++] = value;
         }
-
-
     }
 
     /**
@@ -60,7 +58,11 @@ public class SimpleArrayContainer<E> implements Iterable<E> {
      * @return объект.
      */
     E get(int index) {
-        return (E) container[index];
+        if (container[index] != null) {
+            return (E) container[index];
+        } else {
+            throw new ArrayIndexOutOfBoundsException();
+        }
     }
 
     /**
@@ -71,16 +73,20 @@ public class SimpleArrayContainer<E> implements Iterable<E> {
     @Override
     public Iterator<E> iterator() {
         return new Iterator<E>() {
-            @Override
-            public boolean hasNext() {
-                return index < container.length;
-            }
+            int iterIndex = 0;
 
             @Override
+            public boolean hasNext() {
+                return iterIndex < container.length;
+            }
+            @Override
             public E next() {
-                return (E) container[index++];
+                if (hasNext()) {
+                    return (E) container[iterIndex++];
+                } else {
+                    throw new NoSuchElementException();
+                }
             }
         };
     }
-
 }
