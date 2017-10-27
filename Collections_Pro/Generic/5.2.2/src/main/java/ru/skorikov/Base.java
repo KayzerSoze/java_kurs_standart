@@ -29,13 +29,17 @@ public abstract class Base {
      *
      * @return id.
      */
-    public abstract String getId();
+    public String getId() {
+        return id;
+    }
 
     /**
      * Задать Id.
      *
      * @param id id.
      */
-    public abstract void setId(String id);
+    public void setId(String id) {
+        this.id = id;
+    }
 
 }

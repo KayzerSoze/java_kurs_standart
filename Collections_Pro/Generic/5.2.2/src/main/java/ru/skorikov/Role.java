@@ -43,13 +43,4 @@ public class Role extends Base {
         this.role = role;
     }
 
-    @Override
-    public String getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(String id) {
-        this.id = id;
-    }
 }
