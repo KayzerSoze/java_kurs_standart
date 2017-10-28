@@ -38,10 +38,6 @@ public class SimpleLinkedContainer<E> implements Iterable<E> {
         E data;
         Element next = null;
         int index = 0;
-
-        public E getData() {
-            return data;
-        }
     }
 
     /**
@@ -68,29 +64,29 @@ public class SimpleLinkedContainer<E> implements Iterable<E> {
      * @param index индекс.
      * @return элемент.
      */
-    public E get(int index) throws NullPointerException {
-        Element search = null;
+    public E get(int index) {
+        Element<E> search = null;
         Element getElement = elementFirst;
-        try {
-            while (getElement != null) {
-                if (getElement.index == index) {
-                    search = getElement;
-                    break;
-                } else {
-                    getElement = getElement.next;
-                }
+        while (getElement != null) {
+            if (getElement.index == index) {
+                search = getElement;
+                break;
+            } else {
+                getElement = getElement.next;
             }
-        } catch (Exception ex) {
-            System.out.println("No elements");
         }
-        return (E) search;
+        if (search != null) {
+            return search.data;
+        } else {
+            throw new NullPointerException();
+        }
     }
 
     @Override
     public Iterator<E> iterator() {
         return new Iterator<E>() {
-            Element el1 = elementFirst;
-            Element el2 = el1;
+            Element<E> el1 = elementFirst;
+            Element<E> el2 = el1;
 
             @Override
             public boolean hasNext() {
@@ -101,24 +97,8 @@ public class SimpleLinkedContainer<E> implements Iterable<E> {
             public E next() {
                 el1 = el2;
                 el2 = el2.next;
-                return (E) el1;
+                return el1.data;
             }
         };
-    }
-
-    /**
-     * Метод получает значение элементов в контейнере по индексу.
-     *
-     * @param index
-     * @return element data.
-     */
-    public E getData(int index) {
-
-        Element searchElenent = (Element) get(index);
-        if (searchElenent != null) {
-            return (E) searchElenent.data;
-        } else {
-            throw new NullPointerException("No element");
-        }
     }
 }

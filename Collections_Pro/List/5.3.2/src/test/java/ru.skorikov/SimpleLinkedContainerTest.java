@@ -44,7 +44,7 @@ public class SimpleLinkedContainerTest {
         SimpleLinkedContainer<String> container = new SimpleLinkedContainer<>();
         String str = "testString";
         container.add(str);
-        String testString = container.getData(0);
+        String testString = container.get(0);
 
         Assert.assertEquals(testString, "testString");
     }
@@ -56,6 +56,7 @@ public class SimpleLinkedContainerTest {
      */
     @Test
     public void thenContainerNullWhenReturnNull() throws Exception {
+        testException.expect(NullPointerException.class);
         SimpleLinkedContainer<String> container = new SimpleLinkedContainer<>();
 
         Assert.assertNull(container.get(0));
@@ -72,7 +73,7 @@ public class SimpleLinkedContainerTest {
         container.add("string1");
         container.add("string2");
 
-        String testString = container.getData(1);
+        String testString = container.get(1);
 
         Assert.assertEquals(testString, "string2");
     }
@@ -89,7 +90,7 @@ public class SimpleLinkedContainerTest {
         SimpleLinkedContainer<String> container = new SimpleLinkedContainer<>();
         container.add("string1");
         container.add("string2");
-        String testString = container.getData(3);
+        String testString = container.get(3);
     }
 
 }
