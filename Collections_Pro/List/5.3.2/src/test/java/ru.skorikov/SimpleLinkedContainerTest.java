@@ -5,7 +5,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import static org.hamcrest.core.Is.is;
+import java.util.NoSuchElementException;
+
 import static org.junit.Assert.*;
 
 /**
@@ -56,7 +57,7 @@ public class SimpleLinkedContainerTest {
      */
     @Test
     public void thenContainerNullWhenReturnNull() throws Exception {
-        testException.expect(NullPointerException.class);
+        testException.expect(NoSuchElementException.class);
         SimpleLinkedContainer<String> container = new SimpleLinkedContainer<>();
 
         Assert.assertNull(container.get(0));
@@ -85,7 +86,7 @@ public class SimpleLinkedContainerTest {
      */
     @Test
     public void thenElementNoInContaynerWhenException() throws Exception {
-        testException.expect(NullPointerException.class);
+        testException.expect(NoSuchElementException.class);
 
         SimpleLinkedContainer<String> container = new SimpleLinkedContainer<>();
         container.add("string1");

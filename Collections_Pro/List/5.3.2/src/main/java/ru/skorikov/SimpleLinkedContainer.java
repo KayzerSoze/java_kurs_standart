@@ -1,6 +1,7 @@
 package ru.skorikov;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  * Created with IntelliJ IDEA.
@@ -78,7 +79,7 @@ public class SimpleLinkedContainer<E> implements Iterable<E> {
         if (search != null) {
             return search.data;
         } else {
-            throw new NullPointerException();
+            throw new NoSuchElementException();
         }
     }
 
