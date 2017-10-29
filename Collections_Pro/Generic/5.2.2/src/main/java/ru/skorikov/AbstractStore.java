@@ -12,7 +12,7 @@ package ru.skorikov;
  * Имеет реализованные методы для
  * избежания дублирования кода в классах- наследниках.
  */
-public abstract class AbstractStore implements Store {
+public abstract class AbstractStore<T extends Base> implements Store<T> {
     /**
      * Массив элементов.
      */
@@ -35,7 +35,7 @@ public abstract class AbstractStore implements Store {
      * @return объект.
      */
 
-    public Base add(Base model) {
+    public T add(T model) {
         array.add(model);
         return model;
     }
@@ -54,7 +54,7 @@ public abstract class AbstractStore implements Store {
      * @param model объект.
      * @return объект.
      */
-    public Base update(Base model) {
+    public T update(T model) {
         String modelId = model.getId();
         for (int i = 0; i < array.getObjects().length; i++) {
             User searchUser = (User) array.getObjects()[i];
