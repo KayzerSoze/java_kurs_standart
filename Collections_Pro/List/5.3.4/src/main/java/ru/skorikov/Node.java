@@ -15,12 +15,12 @@ public class Node<T> {
     /**
      * Данные экземплятра класса.
      */
-    public T value;
+    private T value;
 
     /**
      * Ссылка на следующий объект.
      */
-    public Node<T> next;
+    private Node<T> next;
 
     /**
      * Конструктор.
@@ -32,16 +32,25 @@ public class Node<T> {
     }
 
     /**
+     * Задать следующий объект.
+     *
+     * @param next next Object.
+     */
+    public void setNext(Node<T> next) {
+        this.next = next;
+    }
+
+    /**
      * Метод определения цикличности.
      *
      * @param first первый элемент.
      * @return false - цикличен.
      */
     public static boolean hasCycle(Node first) {
-        boolean isCycle = false;
+        boolean isCycle = true;
         // Если элемент 1.
         if (first.next == null) {
-            isCycle = true;
+            isCycle = false;
         } else {
             Node startElement = first;
             Node endElement = first.next;
@@ -63,7 +72,7 @@ public class Node<T> {
                 // Возвращаем стартовый.
                 startElement = first;
                 if (endElement.next == null) {
-                    isCycle = true;
+                    isCycle = false;
                     break;
                 } else {
                     endElement = endElement.next;

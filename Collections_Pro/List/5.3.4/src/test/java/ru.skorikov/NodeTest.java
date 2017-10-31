@@ -1,9 +1,10 @@
 package ru.skorikov;
 
-import org.junit.Assert;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+
 
 /**
  * Created with IntelliJ IDEA.
@@ -16,41 +17,38 @@ public class NodeTest {
 
     /**
      * Проверим Цикличный контейнер.
+     *
      * @throws Exception исключение.
      */
     @Test
     public void isContaynerCycle() throws Exception {
-        Node first = new Node(1);
-        Node two = new Node(2);
-        Node third = new Node(3);
-        Node four = new Node(4);
+        Node n1 = new Node(1);
+        Node n2 = new Node(2);
+        Node n3 = new Node(3);
 
-        first.next = two;
-        two.next = third;
-        third.next = four;
-        four.next = first;
-
-        Assert.assertFalse(Node.hasCycle(first));
+        n1.setNext(n2);
+        n2.setNext(n3);
+        n3.setNext(n1);
+        assertThat(Node.hasCycle(n1), is(true));
 
     }
 
     /**
      * Проверим Нецикличный контейнер.
+     *
      * @throws Exception исключение.
      */
     @Test
     public void isContaynerNoCycle() throws Exception {
-        Node first = new Node(1);
-        Node two = new Node(2);
-        Node third = new Node(3);
-        Node four = new Node(4);
+        Node n1 = new Node(1);
+        Node n2 = new Node(2);
+        Node n3 = new Node(3);
 
-        first.next = two;
-        two.next = third;
-        third.next = four;
-        four.next = null;
+        n1.setNext(n2);
+        n2.setNext(n3);
+        n3.setNext(null);
 
-        Assert.assertTrue(Node.hasCycle(first));
+        assertThat(Node.hasCycle(n1), is(false));
     }
 
 }
