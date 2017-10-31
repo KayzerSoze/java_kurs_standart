@@ -16,7 +16,9 @@ import static org.hamcrest.core.Is.is;
  * @ version: java_kurs_standart
  */
 public class SimpleQueueTest {
-
+    /**
+     * Для обработки ошибок.
+     */
     @Rule
     public ExpectedException testException = ExpectedException.none();
 
@@ -31,7 +33,7 @@ public class SimpleQueueTest {
         queue.push(1);
         queue.push(2);
 
-        Integer testInt = (Integer) queue.container.get(1);
+        Integer testInt = (Integer) queue.getContainer().get(1);
 
         Assert.assertThat(testInt, is(2));
     }
@@ -48,7 +50,7 @@ public class SimpleQueueTest {
         queue.push(2);
 
         queue.poll();
-        Integer testInt = (Integer) queue.container.get(0);
+        Integer testInt = (Integer) queue.getContainer().get(0);
 
         Assert.assertThat(testInt, is(2));
     }
@@ -66,9 +68,22 @@ public class SimpleQueueTest {
         queue.push("String2");
 
         queue.poll();
-        String testString = (String) queue.container.get(0);
+        String testString = (String) queue.getContainer().get(0);
 
         Assert.assertEquals(testString, "String2");
+    }
+
+    /**
+     * Проверим возвращаемое значение.
+     * @throws Exception исключение.
+     */
+    @Test
+    public void thenAddElementAndPoll() throws Exception {
+        SimpleQueue<Integer> queue = new SimpleQueue<>();
+        queue.push(1);
+        queue.push(2);
+        queue.push(3);
+        Assert.assertThat(queue.poll(), is(1));
     }
 
 }

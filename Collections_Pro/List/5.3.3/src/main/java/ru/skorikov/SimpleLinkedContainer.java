@@ -17,17 +17,17 @@ public class SimpleLinkedContainer<E> implements Iterable<E> {
     /**
      * Счетчик.
      */
-    public int index = 0;
+    private int index = 0;
 
     /**
      * Начальный элемент.
      */
-    public Element elementFirst;
+    private Element elementFirst;
 
     /**
      * Конечный элемент.
      */
-    public Element elementLast;
+    private Element elementLast;
 
     /**
      * Класс Элемент со ссылкой.
@@ -36,9 +36,66 @@ public class SimpleLinkedContainer<E> implements Iterable<E> {
      * @param <E> параметр.
      */
     public static class Element<E> {
-        E data;
-        Element next = null;
-        int index = 0;
+        /**
+         * Data.
+         */
+        private E data;
+        /**
+         * Ссылка на следующий элемент.
+         */
+        private Element next = null;
+        /**
+         * Счетчик.
+         */
+        private int index = 0;
+
+        /**
+         * Получить индекс элемента.
+         * @return индекс.
+         */
+        public int getIndex() {
+            return index;
+        }
+
+        /**
+         * Задать индекс элемента.
+         * @param index индекс.
+         */
+        public void setIndex(int index) {
+            this.index = index;
+        }
+
+        /**
+         * Получить данные.
+         * @return данные.
+         */
+        public E getData() {
+            return data;
+        }
+
+        /**
+         * Задать данные.
+         * @param data данные.
+         */
+        public void setData(E data) {
+            this.data = data;
+        }
+
+        /**
+         * Получить следующий элемент.
+         * @return элемент.
+         */
+        public Element getNext() {
+            return next;
+        }
+
+        /**
+         * Задать следующий элемент.
+         * @param next элемент.
+         */
+        public void setNext(Element next) {
+            this.next = next;
+        }
     }
 
     /**
@@ -53,7 +110,8 @@ public class SimpleLinkedContainer<E> implements Iterable<E> {
             elementFirst = element;
             elementLast = element;
         } else {
-            elementLast.next = element;
+            elementLast.setNext(element);
+            //elementLast.next = element;
             elementLast = element;
         }
         element.index = index++;
@@ -73,7 +131,7 @@ public class SimpleLinkedContainer<E> implements Iterable<E> {
                 search = getElement;
                 break;
             } else {
-                getElement = getElement.next;
+                getElement = getElement.getNext();
             }
         }
         if (search != null) {
@@ -86,8 +144,8 @@ public class SimpleLinkedContainer<E> implements Iterable<E> {
     @Override
     public Iterator<E> iterator() {
         return new Iterator<E>() {
-            Element<E> el1 = elementFirst;
-            Element<E> el2 = el1;
+            private Element<E> el1 = elementFirst;
+            private Element<E> el2 = el1;
 
             @Override
             public boolean hasNext() {
@@ -101,5 +159,53 @@ public class SimpleLinkedContainer<E> implements Iterable<E> {
                 return el1.data;
             }
         };
+    }
+
+    /**
+     * Получить индекс контейнера.
+     * @return индекс.
+     */
+    public int getIndex() {
+        return index;
+    }
+
+    /**
+     * Установить индекс контейнера.
+     * @param index индекс.
+     */
+    public void setIndex(int index) {
+        this.index = index;
+    }
+
+    /**
+     * Получить первый элемент.
+     * @return первый элемент.
+     */
+    public Element getElementFirst() {
+        return elementFirst;
+    }
+
+    /**
+     * Задать первый элемент.
+     * @param elementFirst первый элемент.
+     */
+    public void setElementFirst(Element elementFirst) {
+        this.elementFirst = elementFirst;
+    }
+
+    /**
+     * Получить последний элемент.
+     * @return последний элемент.
+     */
+    public Element getElementLast() {
+        return elementLast;
+    }
+
+    /**
+     * Задать последний элемент.
+     * @param elementLast последний элемент.
+     */
+    public void setElementLast(Element elementLast) {
+        this.elementLast = elementLast;
     }
 }

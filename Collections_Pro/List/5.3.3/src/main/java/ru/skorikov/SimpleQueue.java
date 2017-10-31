@@ -13,7 +13,7 @@ public class SimpleQueue<T> {
     /**
      * Контейнер на базе односвязного списка.
      */
-    SimpleLinkedContainer container = new SimpleLinkedContainer();
+    private SimpleLinkedContainer container = new SimpleLinkedContainer();
 
     /**
      * Добавить объект в контейнер.
@@ -31,17 +31,27 @@ public class SimpleQueue<T> {
      * @return последний элемент.
      */
     public T poll() {
-        container.elementFirst = container.elementFirst.next;
-        SimpleLinkedContainer.Element<T> element = container.elementFirst;
+        SimpleLinkedContainer.Element<T> returnElement = container.getElementFirst();
+        container.setElementFirst(container.getElementFirst().getNext());
+        SimpleLinkedContainer.Element<T> element = container.getElementFirst();
 
         while (element != null) {
-            element.index--;
-            element = element.next;
+            int tempIndex = element.getIndex();
+            tempIndex--;
+            element.setIndex(tempIndex);
+            element = element.getNext();
         }
-        container.index--;
+        int containerNewIndex = container.getIndex();
+        containerNewIndex--;
+        container.setIndex(containerNewIndex);
+        return returnElement.getData();
+    }
 
-        SimpleLinkedContainer.Element<T> returnElement = container.elementFirst;
-
-        return returnElement.data;
+    /**
+     * Получить контейнер.
+     * @return контейнер.
+     */
+    public SimpleLinkedContainer getContainer() {
+        return container;
     }
 }

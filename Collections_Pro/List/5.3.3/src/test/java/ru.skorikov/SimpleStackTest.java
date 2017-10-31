@@ -7,6 +7,9 @@ import org.junit.rules.ExpectedException;
 
 import java.util.NoSuchElementException;
 
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
+
 
 /**
  * Created with IntelliJ IDEA.
@@ -16,7 +19,9 @@ import java.util.NoSuchElementException;
  * @ version: java_kurs_standart
  */
 public class SimpleStackTest {
-
+    /**
+     * Для обработки ошибок.
+     */
     @Rule
     public ExpectedException testException = ExpectedException.none();
 
@@ -33,7 +38,7 @@ public class SimpleStackTest {
         stack.push("String2");
 
         String testString = "String2";
-        String element = (String) stack.container.get(1);
+        String element = (String) stack.getContainer().get(1);
 
         Assert.assertEquals(testString, element);
     }
@@ -52,7 +57,7 @@ public class SimpleStackTest {
         stack.push("String2");
 
         stack.poll();
-        stack.container.get(1);
+        stack.getContainer().get(1);
     }
 
     /**
@@ -68,9 +73,25 @@ public class SimpleStackTest {
         stack.push("String2");
 
         stack.poll();
-        String testString = (String) stack.container.get(0);
+        String testString = (String) stack.getContainer().get(0);
 
         Assert.assertEquals(testString, "String1");
+    }
+
+    /**
+     * Проверим что последний элемент удаляется.
+     *
+     * @throws Exception исключение.
+     */
+    @Test
+    public void thenRemoveAllWhenNotReturnNPE() throws Exception {
+        SimpleStack<Integer> stack = new SimpleStack<>();
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+        assertThat(stack.poll(), is(3));
+        assertThat(stack.poll(), is(2));
+        assertThat(stack.poll(), is(1));
     }
 
 }

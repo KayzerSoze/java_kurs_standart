@@ -14,12 +14,12 @@ public class SimpleStack<T> {
     /**
      * Контейнер элементов.
      */
-    SimpleLinkedContainer container = new SimpleLinkedContainer();
+    private SimpleLinkedContainer container = new SimpleLinkedContainer();
 
     /**
      * Добавить элемент в контейнер.
      *
-     * @param value
+     * @param value данные.
      */
     public void push(T value) {
         container.add(value);
@@ -32,15 +32,27 @@ public class SimpleStack<T> {
      * @return первый элемент.
      */
     public T poll() {
-        SimpleLinkedContainer.Element<T> returnElement = container.elementLast;
+        SimpleLinkedContainer.Element<T> returnElement = container.getElementLast();
 
-        SimpleLinkedContainer.Element<T> newLast = container.elementFirst;
-        while (newLast.next.next != null) {
-            newLast = newLast.next;
+        if (container.getElementLast() == container.getElementFirst()) {
+            container.setElementLast(null);
+            container.setElementFirst(null);
+        } else {
+            SimpleLinkedContainer.Element<T> newLast = container.getElementFirst();
+            while (newLast.getNext().getNext() != null) {
+                newLast = newLast.getNext();
+            }
+            newLast.setNext(null);
+            container.setElementLast(newLast);
         }
-        newLast.next = null;
-        container.elementLast = newLast;
+        return returnElement.getData();
+    }
 
-        return returnElement.data;
+    /**
+     * Получить контейнер.
+     * @return контейнер.
+     */
+    public SimpleLinkedContainer getContainer() {
+        return container;
     }
 }
