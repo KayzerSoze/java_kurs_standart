@@ -49,12 +49,16 @@ public class SimpleSet<E> implements Iterator<E> {
          *
          * @param data данные элемента коллекции.
          */
-        public Element(E data) {
+        Element(E data) {
             this.data = data;
             this.next = null;
         }
     }
 
+    /**
+     * Добавить элемент в коллекцию.
+     * @param data данные.
+     */
     public void add(E data) {
         //Если коллекция пустая
         if (firstElement == null) {
@@ -102,31 +106,5 @@ public class SimpleSet<E> implements Iterator<E> {
             iteratorElement = iteratorElement.next;
         }
         return returnElement.data;
-    }
-
-    public static void main(String[] args) {
-        SimpleSet<String> simpleSet = new SimpleSet<>();
-        simpleSet.add("1");
-        simpleSet.add("2");
-        simpleSet.add("1");
-        simpleSet.add("2");
-        simpleSet.add("1");
-        simpleSet.add("1");
-        simpleSet.add("1");
-        simpleSet.add("2");
-        simpleSet.add("String3");
-
-//        String str = simpleSet.next();
-//        String str1 = simpleSet.next();
-//        String str2 = simpleSet.next();
-
-//        System.out.println(str);
-//        System.out.println(str1);
-//        System.out.println(str2);
-
-        while (simpleSet.hasNext()){
-            System.out.println(simpleSet.next());
-        }
-
     }
 }

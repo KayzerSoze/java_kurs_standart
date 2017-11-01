@@ -7,8 +7,6 @@ import org.junit.rules.ExpectedException;
 
 import java.util.NoSuchElementException;
 
-import static org.hamcrest.core.Is.is;
-
 
 /**
  * Created with IntelliJ IDEA.
@@ -18,7 +16,9 @@ import static org.hamcrest.core.Is.is;
  * @ version: java_kurs_standart
  */
 public class SimpleSetTest {
-
+    /**
+     * Для теста исключений.
+     */
     @Rule
     public ExpectedException testException = ExpectedException.none();
 
