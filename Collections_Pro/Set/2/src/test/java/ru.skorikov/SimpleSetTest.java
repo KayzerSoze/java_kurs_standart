@@ -21,6 +21,7 @@ public class SimpleSetTest {
      */
     @Rule
     public ExpectedException testException = ExpectedException.none();
+
     /**
      * Пробуем найти дубликат.
      *
