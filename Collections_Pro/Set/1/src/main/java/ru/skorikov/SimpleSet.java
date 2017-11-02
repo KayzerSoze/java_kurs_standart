@@ -37,41 +37,46 @@ public class SimpleSet<E> implements Iterator<E> {
     }
 
     /**
+     * Проверка наличия дубликата.
+     *
+     * @param data - element to search
+     * @return - true - has duplicate, false - otherwise.
+     */
+    private boolean hasDuplicate(E data) {
+        boolean hasDublicate = false;
+        for (int i = 0; i < index; i++) {
+            if (simpleSet[i].equals(data)) {
+                hasDublicate = true;
+                break;
+            }
+        }
+        return hasDublicate;
+    }
+
+    /**
+     * Хватает ли места в массиве.
+     */
+    private void ensureCapacity() {
+        if (index >= simpleSet.length) {
+            simpleSet = Arrays.copyOf(simpleSet, simpleSet.length * 2);
+        }
+    }
+
+    /**
      * Добавить объект в хранилище.
      *
      * @param data объект.
      */
     public void add(E data) {
-        // Есть ли такой объект.
-        boolean isDublicate = false;
-        for (int i = 0; i < simpleSet.length;) {
-            if (data.equals(simpleSet[i])) {
-                isDublicate = true;
-                break;
-            } else {
-                i++;
-            }
-        }
-        if (!isDublicate) {
-            // Хватает ли места в массиве.
-            if (index <= simpleSet.length) {
-                simpleSet[index] = data;
-                index++;
-            } else {
-                simpleSet = Arrays.copyOf(simpleSet, simpleSet.length * 2);
-                simpleSet[index] = data;
-                index++;
-            }
+        if (!hasDuplicate(data)) {
+            ensureCapacity();
+            simpleSet[index++] = data;
         }
     }
 
     @Override
     public boolean hasNext() {
-        boolean isNext = false;
-        if (iteratorIndex < simpleSet.length && simpleSet[iteratorIndex] != null) {
-            isNext = true;
-        }
-        return isNext;
+        return iteratorIndex < index;
     }
 
     @Override
