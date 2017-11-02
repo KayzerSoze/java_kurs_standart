@@ -10,5 +10,7 @@
     </parent>
     <modules>
         <module>1</module>
+        <module>2</module>
+        <module>3</module>
     </modules>
 </project>
