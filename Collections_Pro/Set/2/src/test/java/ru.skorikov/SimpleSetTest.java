@@ -5,6 +5,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import java.util.NoSuchElementException;
+
 
 /**
  * Created with IntelliJ IDEA.
@@ -41,7 +43,7 @@ public class SimpleSetTest {
      */
     @Test
     public void tryGetNoSuchElement() throws Exception {
-        testException.expect(NullPointerException.class);
+        testException.expect(NoSuchElementException.class);
         SimpleSet<Integer> simpleSet = new SimpleSet<>();
         simpleSet.add(1);
         simpleSet.add(2);
@@ -58,7 +60,7 @@ public class SimpleSetTest {
      * @throws Exception исключение.
      */
     @Test
-    public void thenAddFiveElementWhenReturnThree() throws Exception {
+    public void whenAddFiveElementThenReturnThree() throws Exception {
         SimpleSet<String> simpleSet = new SimpleSet<>();
         simpleSet.add("String1");
         simpleSet.add("String2");
@@ -70,6 +72,18 @@ public class SimpleSetTest {
         simpleSet.next();
 
         Assert.assertEquals(simpleSet.next(), "String3");
+    }
+
+    /**
+     * Пробуем получить элемент пустой коллекции.
+     *
+     * @throws Exception исключение.
+     */
+    @Test
+    public void whenSetEmptyThenException() throws Exception {
+        testException.expect(NoSuchElementException.class);
+        SimpleSet<String> simpleSet = new SimpleSet<>();
+        simpleSet.hasNext();
     }
 
 }

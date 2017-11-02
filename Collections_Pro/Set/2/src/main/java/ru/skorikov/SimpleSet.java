@@ -108,14 +108,12 @@ public class SimpleSet<E> implements Iterator<E> {
 
     @Override
     public E next() {
-        Element<E> returnElement;
-        if (firstElement == null) {
-            throw new NoSuchElementException();
-        } else {
-            returnElement = iteratorElement;
+        Element<E> returnElement = iteratorElement;
+        if (hasNext()) {
             iteratorElement = iteratorElement.next;
+            return returnElement.data;
+        } else {
+            throw new NoSuchElementException();
         }
-        return returnElement.data;
     }
-
 }
