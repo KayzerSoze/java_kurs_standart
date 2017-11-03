@@ -2,6 +2,7 @@ package ru.skorikov;
 
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  * Created with IntelliJ IDEA.
@@ -81,7 +82,11 @@ public class SimpleSet<E> implements Iterator<E> {
 
     @Override
     public E next() {
-        return (E) simpleSet[iteratorIndex++];
+        if (hasNext()) {
+            return (E) simpleSet[iteratorIndex++];
+        } else {
+            throw new NoSuchElementException("No element");
+        }
     }
 
     /**

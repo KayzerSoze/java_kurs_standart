@@ -1,7 +1,9 @@
 package ru.skorikov;
 
+import org.junit.Rule;
 import org.junit.Test;
-
+import org.junit.rules.ExpectedException;
+import java.util.NoSuchElementException;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
@@ -14,6 +16,11 @@ import static org.junit.Assert.assertThat;
  * @ version: java_kurs_standart
  */
 public class SimpleSetTest {
+    /**
+     * For test Exceptions.
+     */
+    @Rule
+    public ExpectedException testException = ExpectedException.none();
 
     /**
      * Создадим новый контейнер.
@@ -44,6 +51,24 @@ public class SimpleSetTest {
         simpleSet.add("string2");
 
         assertThat(simpleSet.getIndex(), is(3));
+    }
+
+    /**
+     * Создадим новый контейнер.
+     * Добавим 2 разных объекта.
+     * Пробуем получить 3-й
+     * @throws Exception исключение.
+     */
+    @Test
+    public void whenAddTwoElementAndGetThirdThenException() throws Exception {
+        testException.expect(NoSuchElementException.class);
+        SimpleSet<String> simpleSet = new SimpleSet<>(5);
+        simpleSet.add("string");
+        simpleSet.add("string1");
+
+        simpleSet.next();
+        simpleSet.next();
+        simpleSet.next();
     }
 
 }
