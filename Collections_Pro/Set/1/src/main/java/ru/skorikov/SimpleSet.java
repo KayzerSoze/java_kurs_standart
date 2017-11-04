@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+
 /**
  * Created with IntelliJ IDEA.
  *
@@ -14,6 +15,7 @@ import java.util.NoSuchElementException;
  * @ date: 01.11.17
  * @ version: java_kurs_standart
  */
+
 public class SimpleSet<E> implements Iterator<E> {
     /**
      * Хранилище объектов.
