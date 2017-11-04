@@ -3,7 +3,9 @@ package ru.skorikov;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+
 import java.util.NoSuchElementException;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
@@ -15,6 +17,7 @@ import static org.junit.Assert.assertThat;
  * @ date: 01.11.17
  * @ version: java_kurs_standart
  */
+
 public class SimpleSetTest {
     /**
      * For test Exceptions.

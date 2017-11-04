@@ -16,6 +16,7 @@ import java.util.NoSuchElementException;
  * @ version: java_kurs_standart
  */
 
+
 public class SimpleSet<E> implements Iterator<E> {
     /**
      * Хранилище объектов.
