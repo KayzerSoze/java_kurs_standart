@@ -1,6 +1,5 @@
 package ru.skorikov;
 
-
 /**
  * Created with IntelliJ IDEA.
  *
@@ -42,13 +41,7 @@ public class SimpleHashSet<E> {
      * @return хэш.
      */
     public int hash(E data) {
-        String str = data.toString();
-
-        int hash = 0;
-        for (int i = 0; i < str.length(); i++) {
-            hash = (31 * hash + str.charAt(i)) % table.length;
-        }
-        return hash;
+        return Math.abs(data.hashCode() % table.length);
     }
 
     /**
@@ -59,10 +52,9 @@ public class SimpleHashSet<E> {
      */
     public boolean add(E data) {
         boolean ifAdded;
-        int dataHash = hash(data);
-        if (table[dataHash] == null) {
+        if (table[hash(data)] == null) {
             ifAdded = true;
-            table[dataHash] = data;
+            table[hash(data)] = data;
         } else {
             ifAdded = false;
         }
