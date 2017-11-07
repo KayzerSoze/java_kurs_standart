@@ -58,5 +58,4 @@ public class UserTest {
         user.setChildren(4);
         Assert.assertEquals(4, user.getChildren());
     }
-
 }
