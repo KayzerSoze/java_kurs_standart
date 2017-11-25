@@ -32,7 +32,7 @@ public class Directory<K, V> implements Iterator {
     private int index = 0;
 
     /**
-     * Return Iteratir element.
+     * Return Iterator element.
      */
     private Element returnElement;
 
@@ -54,21 +54,24 @@ public class Directory<K, V> implements Iterator {
 
     @Override
     public boolean hasNext() {
-        return index < directory.length;
+        boolean ifHasNext = false;
+        for (int i = index; i < directory.length; i++) {
+            if (directory[i] != null) {
+                index = i;
+                ifHasNext = true;
+                break;
+            }
+        }
+        return ifHasNext;
     }
 
     @Override
     public Object next() {
-        while (hasNext()) {
-            if (directory[index] == null) {
-                index++;
-            } else {
-                returnElement = (Element) directory[index];
-                index++;
-                break;
-            }
+        if (hasNext()) {
+            return directory[index++];
+        } else {
+            throw new NoSuchElementException();
         }
-        return returnElement;
     }
 
     /**
