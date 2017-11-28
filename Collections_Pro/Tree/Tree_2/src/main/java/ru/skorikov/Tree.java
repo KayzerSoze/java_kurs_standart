@@ -31,6 +31,10 @@ class Tree<E extends Comparable<E>> implements SimpleTree<E> {
      * Счетчик для итератора.
      */
     private int index = 0;
+    /**
+     * Есть ли в коллекции дубликаты.
+     */
+    private boolean isDublicate = false;
 
     /**
      * Класс узел - строительный блок коллекции.
@@ -66,12 +70,21 @@ class Tree<E extends Comparable<E>> implements SimpleTree<E> {
     }
 
     /**
+     * Получить корневой элемент.
+     * @return корень.
+     */
+    public Node<E> getRoot() {
+        return root;
+    }
+
+    /**
      * Добавить новый узел.
      *
      * @param parent parent.
      * @param child  child.
      * @return true - добавлен.
      */
+
     @Override
     public boolean add(E parent, E child) {
 
@@ -88,12 +101,13 @@ class Tree<E extends Comparable<E>> implements SimpleTree<E> {
                 }
             } else {
                 Node<E> node = searchNode(root, parent);
-                if (!searchDublicate(node, child)) {
+                if (!searchDublicate(root, child)) {
                     node.childen.add(new Node<>(child));
                     isAdded = true;
                 }
             }
         }
+        isDublicate = false;
         return isAdded;
     }
 
@@ -125,13 +139,15 @@ class Tree<E extends Comparable<E>> implements SimpleTree<E> {
      * @param data данные.
      * @return true - дубликат.
      */
-    public boolean searchDublicate(Node<E> node, E data) {
-        boolean isDublicate = false;
 
+    public boolean searchDublicate(Node<E> node, E data) {
         List<Node<E>> list = node.childen;
         for (Node<E> nodes : list) {
-            if (compare(nodes, data) == 0) {
+            if (compare(nodes, data) == 0 || compare(node, data) == 0) {
                 isDublicate = true;
+                break;
+            } else {
+                searchDublicate(nodes, data);
             }
         }
         return isDublicate;
@@ -190,19 +206,20 @@ class Tree<E extends Comparable<E>> implements SimpleTree<E> {
     /**
      * Бинарное ли дерево.
      *
+     * @param root корень дерева.
      * @return true - бинарное.
      */
-    public boolean isBinary() {
+    public boolean isBinary(Node<E> root) {
         boolean isBinary = true;
         for (Node<E> node : root.childen) {
             if (node.childen.size() > 2 || root.childen.size() > 2) {
                 isBinary = false;
                 break;
             } else {
-                root = node;
-                isBinary();
+                isBinary(node);
             }
         }
         return isBinary;
     }
 }
+
