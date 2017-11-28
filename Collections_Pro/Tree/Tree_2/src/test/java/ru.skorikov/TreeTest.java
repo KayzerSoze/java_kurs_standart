@@ -72,7 +72,7 @@ public class TreeTest {
         tree.add("0", "1");
         tree.add("0", "2");
 
-        Assert.assertTrue(tree.isBinary());
+        Assert.assertTrue(tree.isBinary(tree.getRoot()));
     }
     /**
      * Проверим небинарное дерево.
@@ -85,6 +85,6 @@ public class TreeTest {
         tree.add("0", "2");
         tree.add("0", "3");
 
-        Assert.assertFalse(tree.isBinary());
+        Assert.assertFalse(tree.isBinary(tree.getRoot()));
     }
 }
