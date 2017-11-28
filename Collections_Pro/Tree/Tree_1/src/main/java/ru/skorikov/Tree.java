@@ -7,11 +7,11 @@ import java.util.List;
 /**
  * Created with IntelliJ IDEA.
  *
+ * @param <E> параметр.
+ *            1. Создать элементарную структуру дерева
  * @ author: Alex_Skorikov.
  * @ date: 10.11.17
  * @ version: java_kurs_standart
- * @param <E> параметр.
- * 1. Создать элементарную структуру дерева
  */
 
 class Tree<E extends Comparable<E>> implements SimpleTree<E> {
@@ -31,6 +31,10 @@ class Tree<E extends Comparable<E>> implements SimpleTree<E> {
      * Счетчик для итератора.
      */
     private int index = 0;
+    /**
+     * Есть ли в коллекции дубликаты.
+     */
+    private boolean isDublicate = false;
 
     /**
      * Класс узел - строительный блок коллекции.
@@ -49,6 +53,7 @@ class Tree<E extends Comparable<E>> implements SimpleTree<E> {
 
         /**
          * Конструктор.
+         *
          * @param value данные.
          */
         Node(E value) {
@@ -87,12 +92,13 @@ class Tree<E extends Comparable<E>> implements SimpleTree<E> {
                 }
             } else {
                 Node<E> node = searchNode(root, parent);
-                if (!searchDublicate(node, child)) {
+                if (!searchDublicate(root, child)) {
                     node.childen.add(new Node<>(child));
                     isAdded = true;
                 }
             }
         }
+        isDublicate = false;
         return isAdded;
     }
 
@@ -124,13 +130,15 @@ class Tree<E extends Comparable<E>> implements SimpleTree<E> {
      * @param data данные.
      * @return true - дубликат.
      */
-    public boolean searchDublicate(Node<E> node, E data) {
-        boolean isDublicate = false;
 
+    public boolean searchDublicate(Node<E> node, E data) {
         List<Node<E>> list = node.childen;
         for (Node<E> nodes : list) {
-            if (compare(nodes, data) == 0) {
+            if (compare(nodes, data) == 0 || compare(node, data) == 0) {
                 isDublicate = true;
+                break;
+            } else {
+                searchDublicate(nodes, data);
             }
         }
         return isDublicate;
