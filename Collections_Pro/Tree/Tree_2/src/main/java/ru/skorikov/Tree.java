@@ -38,6 +38,11 @@ class Tree<E extends Comparable<E>> implements SimpleTree<E> {
     private boolean isDublicate = false;
 
     /**
+     * Бинарное ли дерево.
+     */
+    private boolean isBinary = true;
+
+    /**
      * Класс узел - строительный блок коллекции.
      *
      * @param <E> параметр.
@@ -211,7 +216,6 @@ class Tree<E extends Comparable<E>> implements SimpleTree<E> {
      * @return true - бинарное.
      */
     public boolean isBinary(Node<E> root) {
-        boolean isBinary = true;
         for (Node<E> node : root.childen) {
             if (node.childen.size() > 2 || root.childen.size() > 2) {
                 isBinary = false;

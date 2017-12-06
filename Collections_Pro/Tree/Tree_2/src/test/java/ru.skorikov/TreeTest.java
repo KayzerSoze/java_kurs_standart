@@ -7,6 +7,8 @@ import org.junit.rules.ExpectedException;
 
 import java.util.Iterator;
 
+import static org.hamcrest.core.Is.is;
+
 
 /**
  * Created with IntelliJ IDEA.
@@ -80,11 +82,15 @@ public class TreeTest {
      */
     @Test
     public void whenTreeNotBinaryThenReturnFalse() throws Exception {
-        Tree<String> tree = new Tree<>();
-        tree.add("0", "1");
-        tree.add("0", "2");
-        tree.add("0", "3");
+        Tree<Integer> tree = new Tree<>();
+        tree.add(50, 70);
+        tree.add(50, 80);
+        tree.add(70, 90);
+        tree.add(70, 100);
+        tree.add(90, 110);
+        tree.add(90, 120);
+        tree.add(90, 240);
+        Assert.assertThat(tree.isBinary(tree.getRoot()), is(false));
 
-        Assert.assertFalse(tree.isBinary(tree.getRoot()));
     }
 }
