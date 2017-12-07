@@ -30,15 +30,15 @@ public class BinarySearchTreeTest {
     @Test
     public void whenAddNodesThenAdded() throws Exception {
         BinarySearchTree<String> tree = new BinarySearchTree<>();
-        tree.add(5, "55");
-        tree.add(3, "33");
-        tree.add(7, "77");
-        tree.add(2, "22");
-        tree.add(4, "44");
-        tree.add(6, "66");
-        tree.add(8, "88");
+        tree.add("55");
+        tree.add("33");
+        tree.add("77");
+        tree.add("22");
+        tree.add("44");
+        tree.add("66");
+        tree.add("88");
 
-        Assert.assertEquals(tree.getNode(tree.getRoot(), 7), "77");
+        Assert.assertEquals(tree.getNode("77").getValue(), "77");
     }
 
     /**
@@ -50,15 +50,15 @@ public class BinarySearchTreeTest {
     public void addNodesAndTryGetNoElement() throws Exception {
         testException.expect(NoSuchElementException.class);
         BinarySearchTree<String> tree = new BinarySearchTree<>();
-        tree.add(5, "55");
-        tree.add(3, "33");
-        tree.add(7, "77");
-        tree.add(2, "22");
-        tree.add(4, "44");
-        tree.add(6, "66");
-        tree.add(8, "88");
+        tree.add("55");
+        tree.add("33");
+        tree.add("77");
+        tree.add("22");
+        tree.add("44");
+        tree.add("66");
+        tree.add("88");
 
-        tree.getNode(tree.getRoot(), 9);
+        tree.getNode("99");
     }
 
     /**
@@ -70,13 +70,13 @@ public class BinarySearchTreeTest {
     @Test
     public void tryGetMinimum() throws Exception {
         BinarySearchTree<String> tree = new BinarySearchTree<>();
-        tree.add(5, "55");
-        tree.add(3, "33");
-        tree.add(7, "77");
-        tree.add(2, "22");
-        tree.add(4, "44");
-        tree.add(6, "66");
-        tree.add(8, "88");
+        tree.add("55");
+        tree.add("33");
+        tree.add("77");
+        tree.add("22");
+        tree.add("44");
+        tree.add("66");
+        tree.add("88");
 
         Assert.assertEquals(tree.minNode(tree.getRoot()), "22");
     }
@@ -90,15 +90,14 @@ public class BinarySearchTreeTest {
     @Test
     public void tryGetMaximum() throws Exception {
         BinarySearchTree<String> tree = new BinarySearchTree<>();
-        tree.add(5, "55");
-        tree.add(3, "33");
-        tree.add(7, "77");
-        tree.add(2, "22");
-        tree.add(4, "44");
-        tree.add(6, "66");
-        tree.add(8, "88");
+        tree.add("55");
+        tree.add("33");
+        tree.add("77");
+        tree.add("22");
+        tree.add("44");
+        tree.add("66");
+        tree.add("88");
 
         Assert.assertEquals(tree.maxNode(tree.getRoot()), "88");
     }
-
 }

@@ -11,7 +11,7 @@ import java.util.NoSuchElementException;
  * @ version: java_kurs_standart
  * 3. Собственная реализация Binary search tree
  */
-public class BinarySearchTree<E> {
+public class BinarySearchTree<E> implements Comparable<E> {
     /**
      * Корневой элемент.
      */
@@ -21,9 +21,9 @@ public class BinarySearchTree<E> {
      */
     private Node newNode;
     /**
-     * Данные узла по ключу.
+     * Искомый узел.
      */
-    private E searchNodeByKey;
+    private Node searchNode;
     /**
      * Максимальный элемент.
      */
@@ -31,18 +31,32 @@ public class BinarySearchTree<E> {
     /**
      * Минимальный элемент.
      */
-
     private E minNode;
+
+    /**
+     * Будем сравнивать хэш-коды текущего элемента и сравниваемого.
+     *
+     * @param value данные сравниваемого элемента.
+     * @return 0 - равны, -1 - меньше, 1 - больше.
+     */
+    @Override
+    public int compareTo(E value) {
+        int compar = 0;
+        if (value.hashCode() != newNode.value.hashCode()) {
+            if (value.hashCode() < newNode.value.hashCode()) {
+                compar = -1;
+            } else {
+                compar = 1;
+            }
+        }
+        return compar;
+    }
 
     /**
      * Узел.
      * Строительный блок дерева.
      */
-    private class Node {
-        /**
-         * Ключ.
-         */
-        private int key;
+    public class Node {
         /**
          * Данные.
          */
@@ -61,13 +75,19 @@ public class BinarySearchTree<E> {
          * Ключ вычисляем по хэшкоду.
          *
          * @param value данные.
-         * @param key   ключ.
          */
-        Node(int key, E value) {
-            this.key = key;
+        Node(E value) {
             this.value = value;
             this.right = null;
             this.left = null;
+        }
+
+        /**
+         * Получить данные узла.
+         * @return данные.
+         */
+        public E getValue() {
+            return value;
         }
     }
 
@@ -91,26 +111,25 @@ public class BinarySearchTree<E> {
      * Добавить узел в дерево.
      *
      * @param value данные.
-     * @param key   ключ.
      */
-    public void add(int key, E value) {
+    public void add(E value) {
         if (root == null) {
-            root = new Node(key, value);
+            root = new Node(value);
             newNode = root;
         } else {
-            if (newNode.key <= key) {
+            if (compareTo(value) >= 0) {
                 if (newNode.right == null) {
-                    newNode.right = new Node(key, value);
+                    newNode.right = new Node(value);
                 } else {
                     newNode = newNode.right;
-                    add(key, value);
+                    add(value);
                 }
             } else {
                 if (newNode.left == null) {
-                    newNode.left = new Node(key, value);
+                    newNode.left = new Node(value);
                 } else {
                     newNode = newNode.left;
-                    add(key, value);
+                    add(value);
                 }
             }
         }
@@ -118,26 +137,27 @@ public class BinarySearchTree<E> {
     }
 
     /**
-     * Получить данные узла по ключу.
+     * Получить узел по значению.
      *
-     * @param node узел.
-     * @param key  ключ.
-     * @return данные ключа.
+     * @param value значение.
+     * @return узел.
      */
-    public E getNode(Node node, int key) {
-        if (node != null) {
-            if (node.key == key) {
-                searchNodeByKey = node.value;
+    public Node getNode(E value) {
+        if (newNode != null) {
+            if (compareTo(value) == 0) {
+                searchNode = newNode;
             } else {
-                if (key > node.key) {
-                    getNode(node.right, key);
+                if (compareTo(value) > 0) {
+                    newNode = newNode.right;
+                    getNode(value);
                 } else {
-                    getNode(node.left, key);
+                    newNode = newNode.left;
+                    getNode(value);
                 }
             }
         }
-        if (searchNodeByKey != null) {
-            return searchNodeByKey;
+        if (searchNode != null) {
+            return searchNode;
         } else {
             throw new NoSuchElementException();
         }
