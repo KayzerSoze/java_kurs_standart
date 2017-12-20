@@ -13,5 +13,6 @@
         <module>Tree_2</module>
         <module>Tree_3</module>
         <module>Tree_Test</module>
+        <module>Tree_Test2</module>
     </modules>
 </project>
