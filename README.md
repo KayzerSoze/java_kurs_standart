@@ -1,3 +1,5 @@
-# java_kurs_standart
-ba717b1f-9ab5-4f03-bda1-4f108e7ab29a
+[![Build Status](https://travis-ci.org/KayzerSoze/java_kurs_standart.svg?branch=master)](https://travis-ci.org/KayzerSoze/java_kurs_standart)
 [![codecov](https://codecov.io/gh/KayzerSoze/java_kurs_standart/branch/master/graph/badge.svg)](https://codecov.io/gh/KayzerSoze/java_kurs_standart)
+
+
+# java_kurs_standart
