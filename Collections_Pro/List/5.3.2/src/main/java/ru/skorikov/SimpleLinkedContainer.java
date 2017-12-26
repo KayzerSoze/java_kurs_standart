@@ -17,17 +17,17 @@ public class SimpleLinkedContainer<E> implements Iterable<E> {
     /**
      * Счетчик.
      */
-    public int index = 0;
+    private int index = 0;
 
     /**
      * Начальный элемент.
      */
-    public Element elementFirst;
+    private Element elementFirst;
 
     /**
      * Конечный элемент.
      */
-    public Element elementLast;
+    private Element elementLast;
 
     /**
      * Класс Элемент со ссылкой.
@@ -36,9 +36,18 @@ public class SimpleLinkedContainer<E> implements Iterable<E> {
      * @param <E> параметр.
      */
     public static class Element<E> {
-        E data;
-        Element next = null;
-        int index = 0;
+        /**
+         * Данные.
+         */
+        private E data;
+        /**
+         * Следующий элемент.
+         */
+        private Element next = null;
+        /**
+         * счетчик.
+         */
+        private int index = 0;
     }
 
     /**
@@ -86,8 +95,8 @@ public class SimpleLinkedContainer<E> implements Iterable<E> {
     @Override
     public Iterator<E> iterator() {
         return new Iterator<E>() {
-            Element<E> el1 = elementFirst;
-            Element<E> el2 = el1;
+            private Element<E> el1 = elementFirst;
+            private Element<E> el2 = el1;
 
             @Override
             public boolean hasNext() {

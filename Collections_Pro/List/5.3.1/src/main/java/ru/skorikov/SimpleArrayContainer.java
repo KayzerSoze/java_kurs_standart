@@ -73,7 +73,7 @@ public class SimpleArrayContainer<E> implements Iterable<E> {
     @Override
     public Iterator<E> iterator() {
         return new Iterator<E>() {
-            int iterIndex = 0;
+            private int iterIndex = 0;
 
             @Override
             public boolean hasNext() {

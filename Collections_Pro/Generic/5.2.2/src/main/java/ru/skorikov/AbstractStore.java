@@ -11,7 +11,9 @@ package ru.skorikov;
  * Реализует интерфейс Store.
  * Имеет реализованные методы для
  * избежания дублирования кода в классах- наследниках.
+ * @param <T> параметр.
  */
+
 public abstract class AbstractStore<T extends Base> implements Store<T> {
     /**
      * Массив элементов.

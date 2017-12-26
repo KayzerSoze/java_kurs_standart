@@ -12,12 +12,12 @@ public abstract class Base {
     /**
      * Поле класса Id.
      */
-    public String id;
+    private String id;
 
     /**
      * Констуктор.
      *
-     * @param id
+     * @param id поле класса.
      */
 
     public Base(String id) {

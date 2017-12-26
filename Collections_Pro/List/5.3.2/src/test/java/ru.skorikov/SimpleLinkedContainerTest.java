@@ -7,7 +7,8 @@ import org.junit.rules.ExpectedException;
 
 import java.util.NoSuchElementException;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
+
 
 /**
  * Created with IntelliJ IDEA.
@@ -17,7 +18,9 @@ import static org.junit.Assert.*;
  * @ version: java_kurs_standart
  */
 public class SimpleLinkedContainerTest {
-
+    /**
+     * Для тестирования исключений.
+     */
     @Rule
     public ExpectedException testException = ExpectedException.none();
 

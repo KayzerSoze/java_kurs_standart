@@ -1,8 +1,11 @@
 package ru.skorikov;
 
 
-import java.io.*;
-
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 /**
  * Created with IntelliJ IDEA.
@@ -95,7 +98,7 @@ public class CountWordAndSpace {
         try {
             countWordAndSpace.wordCount.join();
             countWordAndSpace.spaceCount.join();
-        } catch ( InterruptedException e ) {
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
         System.out.println("Программа завершена.");
