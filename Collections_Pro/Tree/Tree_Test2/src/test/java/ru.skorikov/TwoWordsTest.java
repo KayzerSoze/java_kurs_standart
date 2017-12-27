@@ -20,7 +20,7 @@ public class TwoWordsTest {
     public void whenWordsConsistOfIdenticalLettersThenTrue() throws Exception {
         TwoWords twoWords = new TwoWords();
         String word1 = "mama";
-        String word2 = "amaaam";
+        String word2 = "amam";
         Assert.assertTrue(twoWords.isWordsConsistOfIdenticalLetters(word1, word2));
     }
     /**
@@ -30,8 +30,19 @@ public class TwoWordsTest {
     @Test
     public void whenWordsNotConsistOfIdenticalLettersThenFalse() throws Exception {
         TwoWords twoWords = new TwoWords();
-        String word1 = "mamama";
-        String word2 = "mamal";
+        String word1 = "mama";
+        String word2 = "ammm";
+        Assert.assertFalse(twoWords.isWordsConsistOfIdenticalLetters(word1, word2));
+    }
+    /**
+     * Проверим слова разной длины.
+     * @throws Exception исключение.
+     */
+    @Test
+    public void whenWordsNotEqualsLength() throws Exception {
+        TwoWords twoWords = new TwoWords();
+        String word1 = "mama";
+        String word2 = "ammmv";
         Assert.assertFalse(twoWords.isWordsConsistOfIdenticalLetters(word1, word2));
     }
 

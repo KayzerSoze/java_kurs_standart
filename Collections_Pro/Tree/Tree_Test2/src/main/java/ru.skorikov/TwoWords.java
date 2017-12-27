@@ -1,7 +1,7 @@
 package ru.skorikov;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -16,42 +16,29 @@ public class TwoWords {
     /**
      * Множество set - не хранит дубликаты.
      */
-    private Set set = new HashSet();
+    private List<String> list = new ArrayList<>();
 
     /**
-     * Проверяем два слова.
-     * Логика такая - заполняем set буквами более длинного слова.
-     * записываем размер множества.
-     * потом записываем в set буквы короткого слова.
-     * если в слове есть новая буква - размер множества увеличится.
+     * Проверяем два слова одинаковой длины.
+     * Логика такая - записываем в List слово побуквенно.
+     * удаляем из листа буквы второго слова.
+     * если слова состоят из одинавого набора букв - размер листа должен стать равен 0.
      *
      * @param str1 слово 1.
      * @param str2 слово 2.
-     * @return true - состоят из одинаковых букв.
+     * @return true - одной длины и состоят из одинаковых букв.
      */
     public boolean isWordsConsistOfIdenticalLetters(String str1, String str2) {
         boolean isWCOIL = false;
 
-        if (str1.length() >= str2.length()) {
-            for (char c : str1.toCharArray()) {
-                set.add(c);
+        if (str1.length() == str2.length()) {
+            for (char ch : str1.toCharArray()) {
+                list.add(String.valueOf(ch));
             }
-            int setSize = set.size();
-            for (char c : str2.toCharArray()) {
-                set.add(c);
+            for (char ch : str2.toCharArray()) {
+                list.remove(String.valueOf(ch));
             }
-            if (set.size() == setSize) {
-               isWCOIL = true;
-            }
-        } else {
-            for (char c : str2.toCharArray()) {
-                set.add(c);
-            }
-            int setSize = set.size();
-            for (char c : str1.toCharArray()) {
-                set.add(c);
-            }
-            if (set.size() == setSize) {
+            if (list.size() == 0) {
                 isWCOIL = true;
             }
         }
