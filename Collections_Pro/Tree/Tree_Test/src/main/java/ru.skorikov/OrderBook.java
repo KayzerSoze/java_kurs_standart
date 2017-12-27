@@ -1,5 +1,8 @@
 package ru.skorikov;
 
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -182,11 +185,21 @@ public class OrderBook {
      * Сопоставление-удаление, свод в одну таблицу.
      * Сортируем, сопоставляем ордера, сводим в одну книгу.
      *
-     * @param map книга книг.
+     * @param file входной файл.
      */
-    public void work(Map<String, Map<Integer, Order>> map) {
+    public void work(File file) {
+        // Разбор файла.
+        try {
+            SAXParserFactory factory = SAXParserFactory.newInstance();
+            SAXParser parser = factory.newSAXParser();
+            SAXHandler handler = new SAXHandler();
+            parser.parse(file, handler);
+            books = handler.getBooks();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         //пока есть книги
-        for (Map.Entry<String, Map<Integer, Order>> pair : map.entrySet()) {
+        for (Map.Entry<String, Map<Integer, Order>> pair : books.entrySet()) {
             //получили книгу
             Map<Integer, Order> temp = pair.getValue();
             //сортировка листа для сопоставления.
@@ -202,10 +215,9 @@ public class OrderBook {
     /**
      * Печать карты.
      *
-     * @param map карта.
      */
-    public void printMap(Map<String, Map<Integer, Order>> map) {
-        for (Map.Entry<String, Map<Integer, Order>> pair : map.entrySet()) {
+    public void printMap() {
+        for (Map.Entry<String, Map<Integer, Order>> pair : books.entrySet()) {
             Map<Integer, Order> book = pair.getValue();
             System.out.printf("%20s%n", pair.getKey());
             System.out.printf("%-10s %-10s %s%n",

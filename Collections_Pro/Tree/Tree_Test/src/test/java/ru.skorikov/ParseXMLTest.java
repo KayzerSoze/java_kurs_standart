@@ -2,7 +2,6 @@ package ru.skorikov;
 
 import org.junit.Assert;
 import org.junit.Test;
-
 import java.io.File;
 import java.util.Map;
 
@@ -25,20 +24,19 @@ public class ParseXMLTest {
      */
     @Test
     public void whenParseFileThenReturnArray() throws Exception {
-        OrderBook orderBook = new OrderBook();
+        Start start = new Start();
         File file = new File("test_book.xml");
-        ParseXML parseXML = new ParseXML();
-        orderBook.work(parseXML.parse(file));
-        Map<String, Map<Integer, Order>> mapMap = parseXML.getBooks();
+        start.setFile(file);
+        start.getOrderBook().work(start.getFile());
 
-        Map<Integer, Order> map = mapMap.get("book-1");
+        Map<String, Map<Integer, Order>> mapMap = start.getOrderBook().getBooks();
 
-        Assert.assertEquals(map.size(), 1);
+        Assert.assertEquals(mapMap.size(), 1);
 
-        Order order = map.get(0);
+        Order order = mapMap.get("book-1").get(0);
 
-        Assert.assertEquals(order.getOperation(), "SELL");
-        Assert.assertEquals(order.getPrice(), 100, 00);
+        Assert.assertThat(order.getOperation(), is("SELL"));
+        Assert.assertThat(order.getPrice(), is(100.00));
         Assert.assertThat(order.getVolume(), is(40));
 
     }
