@@ -3,6 +3,8 @@ package ru.skorikov;
 import org.junit.Assert;
 import org.junit.Test;
 
+import static org.hamcrest.core.Is.is;
+
 
 /**
  * Created with IntelliJ IDEA.
@@ -57,5 +59,19 @@ public class UserTest {
         User user = new User("Name", 1, 1, 12, 1990);
         user.setChildren(4);
         Assert.assertEquals(4, user.getChildren());
+    }
+    /**
+     * Пробуем задать день рождения.
+     *
+     * @throws Exception исключение.
+     */
+    @Test
+    public void whenSetBirthdayThenReturnNewBirthday() throws Exception {
+        User user = new User("Name", 1, 1, 12, 1990);
+        user.setBirthday(15, 3, 1991);
+
+        Assert.assertThat(user.getBirthday().getTime().getDate(),  is(15));
+        Assert.assertThat(user.getBirthday().getTime().getMonth(),  is(2));
+        Assert.assertThat(user.getBirthday().getTime().getYear(),  is(91));
     }
 }

@@ -62,5 +62,17 @@ public class SimpleArrayContainerTest {
 
         Assert.assertThat(testInt, is(35));
     }
+    /**
+     * Пробуем получить несуществующий объект.
+     *
+     * @throws Exception исключение.
+     */
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void tryGetNullElement() throws Exception {
+        SimpleArrayContainer<Integer> container = new SimpleArrayContainer(2);
+//        container.add(25);
+//        container.add(35);
 
+        container.get(1);
+    }
 }
