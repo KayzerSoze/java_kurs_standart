@@ -74,4 +74,15 @@ public class UserTest {
         Assert.assertThat(user.getBirthday().getTime().getMonth(),  is(2));
         Assert.assertThat(user.getBirthday().getTime().getYear(),  is(91));
     }
+
+    /**
+     * Пробуем проверить хэшкод.
+     *
+     * @throws Exception исключение.
+     */
+    @Test
+    public void tryGetHashcode() throws Exception {
+        User user = new User("Name", 1, 1, 12, 1990);
+        user.hashCode();
+    }
 }

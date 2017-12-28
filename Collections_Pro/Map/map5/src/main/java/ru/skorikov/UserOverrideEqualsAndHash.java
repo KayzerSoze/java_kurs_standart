@@ -12,18 +12,34 @@ import java.util.Map;
  */
 public class UserOverrideEqualsAndHash {
     /**
+     * Поле1.
+     */
+    private User user1 = new User("Name1", 2, 1, 2, 1990);
+    /**
+     * Поле2.
+     */
+    private User user2 = new User("Name1", 2, 1, 2, 1990);
+    /**
+     * Хранилище.
+     */
+    private Map<User, Object> map = new HashMap<>();
+
+    /**
+     * Конструктор.
+     */
+    public UserOverrideEqualsAndHash() {
+        this.map = map;
+        map.put(user1, new Object());
+        map.put(user2, new Object());
+    }
+    /**
      * Run application.
      * @param args arguments
      */
     public static void main(String[] args) {
-        User user1 = new User("Name1", 2, 1, 2, 1990);
-        User user2 = new User("Name1", 2, 1, 2, 1990);
+        UserOverrideEqualsAndHash user = new UserOverrideEqualsAndHash();
 
-        Map<User, Object> map = new HashMap<>();
-        map.put(user1, new Object());
-        map.put(user2, new Object());
-
-        System.out.println(map);
+        System.out.println(user.map);
     }
 }
 
