@@ -13,17 +13,43 @@ import java.util.Map;
  */
 public class UserNoOverrideEqualsAndHashCode {
     /**
+     * Поле1.
+     */
+    private User user1 = new User("Name1", 2, 1, 2, 1990);
+    /**
+     * Поле2.
+     */
+    private User user2 = new User("Name1", 2, 1, 2, 1990);
+
+    /**
+     * Конструктор.
+     */
+    public UserNoOverrideEqualsAndHashCode() {
+        this.mapUser = mapUser;
+        mapUser.put(user1, new Object());
+        mapUser.put(user2, new Object());
+    }
+
+    /**
+     * Хранилище юзеров.
+     */
+    private Map<User, Object> mapUser = new HashMap<>();
+
+    /**
+     * Получить карту.
+     * @return карта.
+     */
+    public Map<User, Object> getMapUser() {
+        return mapUser;
+    }
+
+    /**
      * Метод запуска приложения.
      * @param args массив строк.
      */
     public static void main(String[] args) {
-        User user1 = new User("Name1", 2, 1, 2, 1990);
-        User user2 = new User("Name1", 2, 1, 2, 1990);
+        UserNoOverrideEqualsAndHashCode user = new UserNoOverrideEqualsAndHashCode();
 
-        Map<User, Object> mapUser = new HashMap<>();
-        mapUser.put(user1, new Object());
-        mapUser.put(user2, new Object());
-
-        System.out.println(mapUser);
+        System.out.println(user.mapUser);
     }
 }
