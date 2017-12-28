@@ -35,6 +35,14 @@ public class UserOverrideHashCode {
     }
 
     /**
+     * Получить харанилище.
+     * @return хранилище.
+     */
+    public Map<User, Object> getMap() {
+        return map;
+    }
+
+    /**
      * Метод запуска приложения.
      * @param args массив строк.
      */

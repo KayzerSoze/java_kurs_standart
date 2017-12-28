@@ -32,6 +32,16 @@ public class UserOverrideEqualsAndHash {
         map.put(user1, new Object());
         map.put(user2, new Object());
     }
+
+    /**
+     * Получить хранилище.
+     *
+     * @return хранилище.
+     */
+    public Map<User, Object> getMap() {
+        return map;
+    }
+
     /**
      * Run application.
      * @param args arguments

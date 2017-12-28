@@ -7,6 +7,7 @@ import org.junit.rules.ExpectedException;
 
 import java.util.NoSuchElementException;
 
+
 /**
  * Created with IntelliJ IDEA.
  *
@@ -121,5 +122,29 @@ public class DirectoryTest {
         directory.insert("Key", null);
 
         Assert.assertEquals(directory.get("Key"), null);
+    }
+    /**
+     * Пробуем получить итератор next.
+     *
+     * @throws Exception исключение.
+     */
+    @Test
+    public void tryGetIteratorNext() throws Exception {
+        Directory<Integer, String> directory = new Directory<>();
+        directory.insert(0, "Value1");
+
+        Assert.assertEquals(((Directory.Element) directory.next()).getValue(), directory.get(0));
+    }
+
+    /**
+     * Пробуем получить элемент пустой коллекции.
+     *
+     * @throws Exception исключение.
+     */
+    @Test(expected = NoSuchElementException.class)
+    public void tryGetNullHasNext() throws Exception {
+        Directory<Integer, String> directory = new Directory<>();
+
+        directory.next();
     }
 }

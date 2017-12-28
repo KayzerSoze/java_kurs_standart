@@ -99,6 +99,15 @@ public class Directory<K, V> implements Iterator {
         private V value;
 
         /**
+         * Получить данные.
+         *
+         * @return данные.
+         */
+        public V getValue() {
+            return value;
+        }
+
+        /**
          * Designer.
          *
          * @param key   element key
