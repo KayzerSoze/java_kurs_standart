@@ -86,5 +86,16 @@ public class SimpleHashSetTest {
         set.add("String");
         assertFalse(set.remove("TestString"));
     }
+    /**
+     * Пробуем получить коллекцию.
+     *
+     * @throws Exception исключение.
+     */
+    @Test
+    public void tryGetConteiner() throws Exception {
+        SimpleHashSet<String> set = new SimpleHashSet<>();
+        set.add("String");
+        set.getTable();
+    }
 
 }

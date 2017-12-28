@@ -96,5 +96,38 @@ public class SimpleArrayTest {
 
         Assert.assertEquals(simpleArray.get(1), "String3");
     }
+    /**
+     * Пробуем добавить елемент сверх массива.
+     *
+     * @throws Exception исключение.
+     */
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void tryAddExceccElement() throws Exception {
+        SimpleArray<String> simpleArray = new SimpleArray<>(0);
+        simpleArray.add("String1");
+    }
+    /**
+     * Пробуем получить несуществующий элемент.
+     *
+     * @throws Exception исключение.
+     */
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void tryGetExceccElement() throws Exception {
+        SimpleArray<String> simpleArray = new SimpleArray<>(1);
+
+        simpleArray.add("String1");
+        simpleArray.get(1);
+    }
+    /**
+     * Пробуем обновить елемент сверх массива.
+     *
+     * @throws Exception исключение.
+     */
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void tryUpdateExceccElement() throws Exception {
+        SimpleArray<String> simpleArray = new SimpleArray<>(1);
+
+        simpleArray.update(2, "TestString");
+    }
 
 }

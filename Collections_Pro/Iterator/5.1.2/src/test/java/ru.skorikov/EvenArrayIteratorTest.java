@@ -3,6 +3,8 @@ package ru.skorikov;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.NoSuchElementException;
+
 import static org.hamcrest.core.Is.is;
 
 /**
@@ -45,6 +47,17 @@ public class EvenArrayIteratorTest {
         boolean result = iterator.hasNext();
 
         Assert.assertThat(result, is(false));
+    }
+    /**
+     * Проверим несуществующий элемент.
+     * @throws Exception возможно исключение.
+     */
+    @Test(expected = NoSuchElementException.class)
+    public void tryGetNullElement() throws Exception {
+        int[] nub = new int[] {};
+        EvenArrayIterator iterator = new EvenArrayIterator(nub);
+
+        iterator.next();
     }
 
 }

@@ -1,5 +1,6 @@
 package ru.skorikov;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -49,6 +50,18 @@ public class NodeTest {
         n3.setNext(null);
 
         assertThat(Node.hasCycle(n1), is(false));
+    }
+    /**
+     * Проверим пустой контейнер.
+     *
+     * @throws Exception исключение.
+     */
+    @Test
+    public void isContaynerNull() throws Exception {
+        Node n1 = new Node(1);
+
+        Assert.assertFalse(Node.hasCycle(n1));
+
     }
 
 }

@@ -3,6 +3,9 @@ package ru.skorikov;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 import static org.hamcrest.core.Is.is;
 
 
@@ -70,9 +73,48 @@ public class SimpleArrayContainerTest {
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void tryGetNullElement() throws Exception {
         SimpleArrayContainer<Integer> container = new SimpleArrayContainer(2);
-//        container.add(25);
-//        container.add(35);
 
         container.get(1);
+    }
+    /**
+     * Проверяем итератор.
+     *
+     * @throws Exception исключение.
+     */
+    @Test
+    public void tryGetHasNextElement() throws Exception {
+        SimpleArrayContainer<Integer> container = new SimpleArrayContainer(2);
+        container.add(25);
+        container.add(35);
+        Iterator iterator = container.iterator();
+
+        Assert.assertTrue(iterator.hasNext());
+    }
+    /**
+     * Проверяем итератор, получим элемент.
+     *
+     * @throws Exception исключение.
+     */
+    @Test
+    public void tryGetNextElement() throws Exception {
+        SimpleArrayContainer<Integer> container = new SimpleArrayContainer(2);
+        container.add(25);
+        container.add(35);
+        Iterator iterator = container.iterator();
+
+        Assert.assertThat(iterator.next(), is(25));
+    }
+    /**
+     * Проверяем итератор, получим несуществующий элемент.
+     *
+     * @throws Exception исключение.
+     */
+    @Test(expected = NoSuchElementException.class)
+    public void tryGetNullNextElement() throws Exception {
+        SimpleArrayContainer<Integer> container = new SimpleArrayContainer(1);
+        container.add(25);
+        Iterator iterator = container.iterator();
+        iterator.next();
+        iterator.next();
     }
 }

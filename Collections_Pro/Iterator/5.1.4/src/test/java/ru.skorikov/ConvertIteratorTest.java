@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.Iterator;
 
 
+
 /**
  * Created with IntelliJ IDEA.
  *
@@ -32,5 +33,17 @@ public class ConvertIteratorTest {
         convert.next();
         int result = convert.next();
         Assert.assertEquals(result, 2);
+    }
+    /**
+     * Проверим ненулевой итератор.
+     *
+     */
+    @Test
+    public void whenNullIteratorThen() {
+        Iterator<Iterator<Integer>> it = Arrays.asList(
+                Collections.singletonList(1).iterator()
+        ).iterator();
+        Iterator<Integer> convert = new ConvertIterator().convert(it);
+        Assert.assertTrue(convert.hasNext());
     }
 }

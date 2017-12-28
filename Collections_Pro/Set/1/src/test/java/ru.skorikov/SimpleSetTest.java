@@ -74,4 +74,32 @@ public class SimpleSetTest {
         simpleSet.next();
     }
 
+    /**
+     * Создадим новый контейнер на один элемент.
+     * Добавим 2 разных объекта.
+     *
+     * @throws Exception исключение.
+     */
+    @Test
+    public void whenAddTwoElementThenConteinerIscrease() throws Exception {
+        SimpleSet<String> simpleSet = new SimpleSet<>(1);
+        simpleSet.add("string");
+        simpleSet.add("string1");
+
+    }
+    /**
+     * Создадим новый контейнер на один элемент.
+     * Добавим объект, и получим новый контейнер.
+     *
+     * @throws Exception исключение.
+     */
+    @Test
+    public void whenAddTOneElementThenReturnNewConteiner() throws Exception {
+        SimpleSet<String> simpleSet = new SimpleSet<>(1);
+        simpleSet.add("string");
+        simpleSet.getSimpleSet();
+
+    }
+
+
 }

@@ -5,8 +5,10 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertNotNull;
 
 
@@ -94,7 +96,32 @@ public class SimpleLinkedContainerTest {
         SimpleLinkedContainer<String> container = new SimpleLinkedContainer<>();
         container.add("string1");
         container.add("string2");
-        String testString = container.get(3);
+        container.get(3);
+    }
+    /**
+     * Проверяем итератор.
+     *
+     * @throws Exception исключение.
+     */
+    @Test
+    public void tryGetNextElement() throws Exception {
+        SimpleLinkedContainer<String> container = new SimpleLinkedContainer<>();
+        Iterator iterator = container.iterator();
+
+        Assert.assertThat(iterator.hasNext(), is(false));
+    }
+    /**
+     * Проверяем итератор, получим следующий элемент.
+     *
+     * @throws Exception исключение.
+     */
+    @Test
+    public void tryGetNextElementFromContainer() throws Exception {
+        SimpleLinkedContainer<String> container = new SimpleLinkedContainer<>();
+        container.add("String");
+        Iterator iterator = container.iterator();
+
+        Assert.assertThat(iterator.next().toString(), is("String"));
     }
 
 }
