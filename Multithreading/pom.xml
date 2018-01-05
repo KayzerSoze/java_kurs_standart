@@ -12,6 +12,7 @@
     <modules>
         <module>Threads</module>
         <module>JMM</module>
+        <module>Monitore_Synchronizy</module>
     </modules>
 
 </project>
