@@ -1,6 +1,7 @@
 package ru.skorikov;
 
-import java.util.ArrayList;
+
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -14,9 +15,10 @@ import java.util.List;
  */
 public class TwoWords {
     /**
-     * Множество set - не хранит дубликаты.
+     * Рабочий лист.
      */
-    private List<String> list = new ArrayList<>();
+    private List<String> list = new LinkedList<>();
+
 
     /**
      * Проверяем два слова одинаковой длины.
