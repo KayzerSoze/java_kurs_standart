@@ -23,14 +23,14 @@ class UserStorage {
     /**
      * Хранилище пользователей.
      */
+    @GuardedBy("this")
     private List<User> list = new LinkedList<>();
 
     /**
      * Получить лист пользователей.
      * @return лист.
      */
-    @GuardedBy("this")
-    List<User> getList() {
+    synchronized List<User> getList() {
         return list;
     }
 
