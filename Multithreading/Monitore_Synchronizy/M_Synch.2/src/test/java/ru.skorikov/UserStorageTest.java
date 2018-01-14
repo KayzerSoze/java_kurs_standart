@@ -26,7 +26,7 @@ public class UserStorageTest {
         User user = new User(1, 100);
         userStorage.add(user);
 
-        Assert.assertEquals(userStorage.getList().get(0), user);
+        Assert.assertThat(userStorage.getUser(1), is(user));
     }
 
     /**
@@ -54,7 +54,7 @@ public class UserStorageTest {
         userStorage.add(user);
         userStorage.update(user1);
 
-        Assert.assertEquals(userStorage.getList().get(0).getAmount(), 300);
+        Assert.assertThat(userStorage.getUser(1), is(user1));
     }
 
     /**
@@ -74,14 +74,14 @@ public class UserStorageTest {
      *
      * @throws Exception исключение.
      */
-    @Test
+    @Test(expected = NoSuchElementException.class)
     public void whenDeleteUserThenReturnNull() throws Exception {
         UserStorage userStorage = new UserStorage();
         User user = new User(1, 100);
         userStorage.add(user);
         userStorage.delete(user);
 
-        Assert.assertThat(userStorage.getList().size(), is(0));
+        userStorage.getUser(1);
     }
 
     /**
@@ -89,11 +89,11 @@ public class UserStorageTest {
      *
      * @throws Exception исключение.
      */
-    @Test
+    @Test(expected = NoSuchElementException.class)
     public void whenDeleteNullThenFalse() throws Exception {
         UserStorage userStorage = new UserStorage();
 
-        Assert.assertFalse(userStorage.delete(null));
+        userStorage.delete(new User(1));
     }
 
     /**
@@ -110,8 +110,8 @@ public class UserStorageTest {
         userStorage.add(user1);
         userStorage.transfer(1, 2, 50);
 
-        Assert.assertEquals(userStorage.getList().get(0).getAmount(), 50);
-        Assert.assertEquals(userStorage.getList().get(1).getAmount(), 250);
+        Assert.assertEquals(userStorage.getUser(1).getAmount(), 50);
+        Assert.assertEquals(userStorage.getUser(2).getAmount(), 250);
     }
 
     /**
@@ -197,7 +197,7 @@ public class UserStorageTest {
         thread2.join();
         thread3.join();
 
-        Assert.assertThat(userStorage.getList().get(0).getAmount(), is(0));
-        Assert.assertThat(userStorage.getList().get(1).getAmount(), is(200));
+        Assert.assertThat(userStorage.getUser(1).getAmount(), is(0));
+        Assert.assertThat(userStorage.getUser(2).getAmount(), is(200));
     }
 }

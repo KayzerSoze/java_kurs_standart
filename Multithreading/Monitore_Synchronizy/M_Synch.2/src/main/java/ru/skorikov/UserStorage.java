@@ -27,14 +27,6 @@ class UserStorage {
     private List<User> list = new LinkedList<>();
 
     /**
-     * Получить лист пользователей.
-     * @return лист.
-     */
-    synchronized List<User> getList() {
-        return list;
-    }
-
-    /**
      * Добавить user.
      *
      * @param user user.
@@ -72,7 +64,7 @@ class UserStorage {
     }
 
     /**
-     * Удалить user.
+     * Delete user.
      *
      * @param user user.
      * @return deleteOrNo.
@@ -113,6 +105,29 @@ class UserStorage {
                     temp.setAmount(temp.getAmount() + amount);
                 }
             }
+        } else {
+            throw new NoSuchElementException();
+        }
+    }
+
+    /**
+     * Получить User из листа.
+     *
+     * @param id Id User.
+     * @return User.
+     */
+    synchronized User getUser(int id) {
+        boolean isFind = false;
+        User returnUser = new User(id);
+        for (User user : list) {
+            if (user.equals(returnUser)) {
+                returnUser = user;
+                isFind = true;
+                break;
+            }
+        }
+        if (isFind) {
+            return returnUser;
         } else {
             throw new NoSuchElementException();
         }
