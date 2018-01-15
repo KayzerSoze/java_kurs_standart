@@ -1,6 +1,5 @@
 package ru.skorikov;
 
-
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -12,9 +11,10 @@ import java.util.NoSuchElementException;
  *
  * Создать динамический список на базе массива.
  * @ author: Alex_Skorikov.
- * @ date: 23.10.17
+ * @ date: 10.01.18
  * @ version: java_kurs_standart
  */
+
 public class SimpleArrayContainer<E> implements Iterable<E> {
     /**
      * Массив объектов.
@@ -90,3 +90,4 @@ public class SimpleArrayContainer<E> implements Iterable<E> {
         };
     }
 }
+
