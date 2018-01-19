@@ -27,11 +27,13 @@ public class SimpleLinkedContainer<E> implements Iterable<E> {
     /**
      * First element.
      */
+    @GuardedBy("this")
     private Element elementFirst;
 
     /**
      * Last element.
      */
+    @GuardedBy("this")
     private Element elementLast;
 
 
