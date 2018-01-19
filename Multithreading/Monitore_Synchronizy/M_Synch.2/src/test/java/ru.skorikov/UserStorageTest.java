@@ -74,7 +74,7 @@ public class UserStorageTest {
      *
      * @throws Exception исключение.
      */
-    @Test(expected = NoSuchElementException.class)
+    @Test(expected = IndexOutOfBoundsException.class)
     public void whenDeleteUserThenReturnNull() throws Exception {
         UserStorage userStorage = new UserStorage();
         User user = new User(1, 100);
@@ -89,7 +89,7 @@ public class UserStorageTest {
      *
      * @throws Exception исключение.
      */
-    @Test(expected = NoSuchElementException.class)
+    @Test(expected = IndexOutOfBoundsException.class)
     public void whenDeleteNullThenFalse() throws Exception {
         UserStorage userStorage = new UserStorage();
 
@@ -133,7 +133,7 @@ public class UserStorageTest {
      *
      * @throws Exception исключение.
      */
-    @Test(expected = NoSuchElementException.class)
+    @Test(expected = IndexOutOfBoundsException.class)
     public void whenDeleteNullUserThenException() throws Exception {
         UserStorage userStorage = new UserStorage();
         User user = new User(1, 100);
@@ -147,7 +147,7 @@ public class UserStorageTest {
      *
      * @throws Exception исключение.
      */
-    @Test(expected = NoSuchElementException.class)
+    @Test(expected = IndexOutOfBoundsException.class)
     public void whenTransferNullUserThenException() throws Exception {
         UserStorage userStorage = new UserStorage();
         User user = new User(1, 100);

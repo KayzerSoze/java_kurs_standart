@@ -3,7 +3,6 @@ package ru.skorikov;
 import net.jcip.annotations.GuardedBy;
 import net.jcip.annotations.ThreadSafe;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -77,7 +76,7 @@ class UserStorage {
                 list.remove(user);
                 isDelete = true;
             } else {
-                throw new NoSuchElementException();
+                throw new IndexOutOfBoundsException();
             }
         }
         return isDelete;
@@ -91,22 +90,14 @@ class UserStorage {
      * @param amount сумма.
      */
     synchronized void transfer(int fromId, int toId, int amount) {
-        User user1 = new User(fromId);
-        User user2 = new User(toId);
+        User user1 = getUser(fromId);
+        User user2 = getUser(toId);
 
-        Iterator<User> iterator = list.iterator();
-        if (list.contains(user1) && list.contains(user2)) {
-            while (iterator.hasNext()) {
-                User temp = iterator.next();
-                if (temp.equals(user1)) {
-                    temp.setAmount(temp.getAmount() - amount);
-                }
-                if (temp.equals(user2)) {
-                    temp.setAmount(temp.getAmount() + amount);
-                }
-            }
+        if (user1.getAmount() >= amount) {
+            user1.setAmount(user1.getAmount() - amount);
+            user2.setAmount(user2.getAmount() + amount);
         } else {
-            throw new NoSuchElementException();
+            System.out.println("No money");
         }
     }
 
@@ -117,19 +108,11 @@ class UserStorage {
      * @return User.
      */
     synchronized User getUser(int id) {
-        boolean isFind = false;
-        User returnUser = new User(id);
-        for (User user : list) {
-            if (user.equals(returnUser)) {
-                returnUser = user;
-                isFind = true;
-                break;
-            }
-        }
-        if (isFind) {
+        User returnUser = list.get(list.indexOf(new User(id)));
+        if (returnUser != null) {
             return returnUser;
         } else {
-            throw new NoSuchElementException();
+            throw new IndexOutOfBoundsException();
         }
     }
 }
