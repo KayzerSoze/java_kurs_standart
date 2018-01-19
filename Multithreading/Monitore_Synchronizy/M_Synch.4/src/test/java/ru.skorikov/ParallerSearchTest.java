@@ -28,7 +28,7 @@ public class ParallerSearchTest {
         List<String> list = new ArrayList<>();
         list.add(".txt");
         list.add(".xml");
-        String root = new File("").getAbsolutePath();
+        String root = new File("/home/insaider/Coding/projects/java_kurs_standart/Multithreading/Monitore_Synchronizy/M_Synch.4").getAbsolutePath();
         String text = "Салтан";
         ParallerSearch parallerSearch = new ParallerSearch(root, text, list);
         String testStr =
