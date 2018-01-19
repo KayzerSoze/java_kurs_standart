@@ -154,4 +154,5 @@ public class ParallerSearch {
             System.out.println(s);
         }
     }
+
 }

@@ -31,9 +31,8 @@ public class ParallerSearchTest {
         String root = new File("").getAbsolutePath();
         String text = "Салтан";
         ParallerSearch parallerSearch = new ParallerSearch(root, text, list);
-        String testStr
-                = "/home/insaider/Coding/projects/java_kurs_standart"
-                + "/Multithreading/Monitore_Synchronizy/M_Synch.4/Skazka.txt";
+        String testStr =
+        "/home/insaider/Coding/projects/java_kurs_standart/Multithreading/Monitore_Synchronizy/M_Synch.4/Skazka1.txt";
 
         Assert.assertThat(parallerSearch.result().get(0), is(testStr));
     }
