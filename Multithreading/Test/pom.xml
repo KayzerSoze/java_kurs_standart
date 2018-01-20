@@ -1,11 +1,14 @@
 <project>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>W_N_N_all.3</artifactId>
+    <artifactId>Test</artifactId>
     <version>1.0</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
     <parent>
         <groupId>ru.skorikov</groupId>
-        <artifactId>Wait_Notify_NotifyAll</artifactId>
+        <artifactId>Multithreading</artifactId>
         <version>1.0</version>
     </parent>
+    <modules>
+        <module>Test_1</module>
+    </modules>
 </project>
