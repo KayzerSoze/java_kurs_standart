@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created with IntelliJ IDEA.
@@ -45,20 +46,19 @@ public class ParallerSearch {
         this.root = root;
         this.text = text;
         this.exts = exts;
-        threadsSize = 0;
+        threadsSize = new AtomicInteger(0);
     }
 
     //Лист результатов
     /**
      * Лист с результатами.
      */
-    @GuardedBy("this")
+    @GuardedBy("itself")
     private final List<String> rezult = new ArrayList<>();
     /**
      * Подсчет количества запущенных процессов.
      */
-    @GuardedBy("this")
-    private volatile Integer threadsSize;
+    private AtomicInteger threadsSize;
 
     /**
      * Поиск текста в файле.
@@ -97,14 +97,14 @@ public class ParallerSearch {
         if (filesInDirectory != null) {
             //ищем файлы в текущей директории
             for (File f : filesInDirectory) {
-                threadsSize++;
+                threadsSize.incrementAndGet();
                 //если директория новый поток
                 if (f.isDirectory()) {
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
                             search(f);
-                            threadsSize--;
+                            threadsSize.decrementAndGet();
                         }
                     }).start();
                 } else {
@@ -114,15 +114,10 @@ public class ParallerSearch {
                     if (index != -1) {
                         str = str.substring(index);
                         if (exts.contains(str)) {
-                            new Thread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    searchText(f);
-                                    threadsSize--;
-                                }
-                            }).start();
+                            searchText(f);
+                            threadsSize.decrementAndGet();
                         } else {
-                            threadsSize--;
+                            threadsSize.decrementAndGet();
                         }
                     }
                 }
@@ -140,12 +135,13 @@ public class ParallerSearch {
         boolean isEnd = false;
         //Дожидаемся завершения поиска.
         while (!isEnd) {
-            if (threadsSize == 0) {
+            if (threadsSize.get() == 0) {
                 isEnd = true;
             }
         }
         return rezult;
     }
+
     /**
      * Печать листа результатов.
      */
