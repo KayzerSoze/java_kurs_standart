@@ -17,6 +17,10 @@ public class Consumer extends Thread {
      * Что то полезное в очереди.
      */
     private Object data;
+    /**
+     * Удалось ли получить из очереди.
+     */
+    private boolean isTake = false;
 
     /**
      * Конструктор.
@@ -47,12 +51,14 @@ public class Consumer extends Thread {
     @Override
     public void run() {
         //пробуем получить что то из очереди.
-        while (true) {
-            int start = blockingQueue.getSize();
+        while (!isTake) {
+            //нужна проверка что получили 1 раз
+            //иначе выгребет все из очереди
             custom();
-            if (start > blockingQueue.getSize()) {
-                break;
-            }
+            System.out.println("I'm consum " + data);
+            isTake = true;
         }
+        //Возвращаем для повторного использования.
+        isTake = false;
     }
 }

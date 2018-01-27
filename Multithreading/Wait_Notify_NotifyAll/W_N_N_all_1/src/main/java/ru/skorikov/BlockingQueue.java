@@ -18,59 +18,60 @@ public class BlockingQueue {
     /**
      * Лист - очередь.
      */
-    @GuardedBy("this")
-    private List queue = new LinkedList();
+    @GuardedBy("itself")
+    private List<Object> queue = new LinkedList();
     /**
      * Размер очереди.
      */
-    @GuardedBy("this")
+    @GuardedBy("itself")
     private int limit;
 
     /**
      * Конструктор.
+     *
      * @param limit размер.
      */
-    public BlockingQueue(int limit) {
+    BlockingQueue(int limit) {
         this.limit = limit;
     }
 
     /**
-     * Получить размер очереди.
-     * @return размер.
-     */
-    public int getSize() {
-        return queue.size();
-    }
-
-    /**
      * Метод добавляет в очередь.
+     *
      * @param item то что добавляем.
      * @throws InterruptedException исключение.
      */
     public synchronized void add(Object item) throws InterruptedException {
+        //Пока лист заполнен (list.size == limit) добавлять не можем.
         while (this.queue.size() == this.limit) {
+            //спим
             wait();
         }
-        if (this.queue.size() == 0) {
-            notifyAll();
-        }
+        //можем добавить в конец листа.
         this.queue.add(item);
+        //пробудить всех
+        this.notifyAll();
     }
 
     /**
      * Метод получает из очереди.
+     *
      * @return то что получаем.
      * @throws InterruptedException исключение.
      */
     public synchronized Object take() throws InterruptedException {
+        //пока брать нечего
         while (this.queue.size() == 0) {
+            //спим
             wait();
         }
-        if (this.queue.size() == this.limit) {
-            notifyAll();
-        }
-        Object item = this.queue.get(0);
+        //получаем первое что-то из листа
+        Object rezult = this.queue.get(0);
+        //удаляем первый элемент - освобождаем 1 элемент в листе
         this.queue.remove(0);
-        return item;
+        //будим всех
+        this.notifyAll();
+        //возвращаем данные.
+        return rezult;
     }
 }

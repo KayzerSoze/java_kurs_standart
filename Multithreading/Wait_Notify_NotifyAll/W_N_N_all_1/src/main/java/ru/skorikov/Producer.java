@@ -7,16 +7,20 @@ package ru.skorikov;
  * @ date: 22.01.18
  * @ version: java_kurs_standart
  * Класс продюссер.
- *
  */
 public class Producer extends Thread {
     /**
-     * Очередь.
+     * Очередь в которую будем добавлять то, что произвели.
      */
     private BlockingQueue blockingQueue;
+    /**
+     * Удалось ли добавить в очередь.
+     */
+    private boolean isAdded = false;
 
     /**
      * Конструктор.
+     *
      * @param blockingQueue очередь.
      */
     public Producer(BlockingQueue blockingQueue) {
@@ -25,25 +29,28 @@ public class Producer extends Thread {
 
     /**
      * Метод который делает какую то полезную работу.
+     *
      * @return то что сделал.
      */
     private Object produce() {
+        //это что-то полезное.
         return Thread.currentThread().getName();
     }
 
     @Override
     public void run() {
-        //Бесконечно пробуем добавить в очередь.
-        while (true) {
+        //Пробуем добавить в очередь.
+        while (!isAdded) {
+            //нужна проверка - что добавлили 1 раз иначе
+            //забьет всю очередь
             try {
-                int start = blockingQueue.getSize();
                 blockingQueue.add(produce());
-                if (start < blockingQueue.getSize()) {
-                    break;
-                }
+                isAdded = true;
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
+        //Возвращаем для повторного использования.
+        isAdded = false;
     }
 }

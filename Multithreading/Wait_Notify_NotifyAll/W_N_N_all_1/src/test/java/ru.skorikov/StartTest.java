@@ -3,7 +3,7 @@ package ru.skorikov;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static java.lang.Thread.State.RUNNABLE;;
+import static java.lang.Thread.State.RUNNABLE;
 import static java.lang.Thread.State.WAITING;
 import static org.hamcrest.core.Is.is;
 
