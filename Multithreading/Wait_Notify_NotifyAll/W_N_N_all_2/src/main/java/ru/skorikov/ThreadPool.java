@@ -8,11 +8,4 @@ package ru.skorikov;
  * @ version: java_kurs_standart
  */
 public class ThreadPool {
-    public static void main(String[] args) {
-
-        int processors = Runtime.getRuntime().availableProcessors();
-
-        System.out.println(processors);
-
-    }
 }
