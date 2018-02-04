@@ -8,5 +8,4 @@ package ru.skorikov;
  * @ version: java_kurs_standart
  */
 public class ThreadPool {
-
 }

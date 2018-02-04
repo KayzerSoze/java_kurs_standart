@@ -28,7 +28,7 @@ public class Start {
         //Новая блокирующая очередь.
         BlockingQueue queue = new BlockingQueue(3);
         //Новый получатель данных
-        Thread consumer = new Consumer(queue);
+        Consumer consumer = new Consumer(queue);
         /**
          * Запускаем 10 новых потоков производителей.
          */
