@@ -4,7 +4,6 @@ import net.jcip.annotations.GuardedBy;
 import net.jcip.annotations.ThreadSafe;
 
 import java.util.LinkedList;
-import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -12,18 +11,19 @@ import java.util.List;
  * @ author: Alex_Skorikov.
  * @ date: 21.01.18
  * @ version: java_kurs_standart
+ * @param <T> тип данных.
  */
 @ThreadSafe
-public class BlockingQueue {
+public class BlockingQueue<T> {
     /**
-     * Лист - очередь.
+     * WorkList.
      */
-    @GuardedBy("itself")
-    private List<Object> queue = new LinkedList();
+    @GuardedBy("this")
+    private LinkedList<T> queue;
     /**
      * Размер очереди.
      */
-    @GuardedBy("itself")
+    @GuardedBy("this")
     private int limit;
 
     /**
@@ -33,6 +33,7 @@ public class BlockingQueue {
      */
     BlockingQueue(int limit) {
         this.limit = limit;
+        this.queue = new LinkedList();
     }
 
     /**
@@ -41,7 +42,7 @@ public class BlockingQueue {
      * @param item то что добавляем.
      * @throws InterruptedException исключение.
      */
-    public synchronized void add(Object item) throws InterruptedException {
+    public synchronized void add(T item) throws InterruptedException {
         //Пока лист заполнен (list.size == limit) добавлять не можем.
         while (this.queue.size() == this.limit) {
             //спим
