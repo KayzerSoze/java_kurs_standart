@@ -17,11 +17,13 @@ import java.util.LinkedList;
 public class BlockingQueue<T> {
     /**
      * Лист - очередь.
+     * Доступ к этому полю защищен блокировкой текущего (this) объекта.
      */
     @GuardedBy("this")
     private final LinkedList queue;
     /**
      * Размер очереди.
+     * Доступ к этому полю защищен блокировкой текущего (this) объекта.
      */
     @GuardedBy("this")
     private final int limit;
