@@ -18,6 +18,10 @@ public class ThreadPool {
      * Количество ядер.
      */
     private static int n = Runtime.getRuntime().availableProcessors();
+    /**
+     * Массив потоков.
+     */
+    private final Job[] threads;
 
     /**
      * Лист задач.
@@ -30,11 +34,7 @@ public class ThreadPool {
      */
     public ThreadPool() {
         this.list = new LinkedList<>();
-        Job[] threads = new Job[n];
-        for (int i = 0; i < n; i++) {
-            threads[i] = new Job();
-            threads[i].start();
-        }
+        this.threads = new Job[n];
     }
 
     /**
@@ -57,7 +57,7 @@ public class ThreadPool {
         @Override
         public void run() {
             Runnable runnable;
-            while (true) {
+            while (!Thread.currentThread().isInterrupted()) {
                 synchronized (list) {
                     while (list.size() == 0) {
                         try {
@@ -70,6 +70,25 @@ public class ThreadPool {
                 }
                 runnable.run();
             }
+        }
+    }
+
+    /**
+     * Запуск пула потоков.
+     */
+    public void startPool() {
+        for (int i = 0; i < n; i++) {
+            threads[i] = new Job();
+            threads[i].start();
+        }
+    }
+
+    /**
+     * Остановить пул потоков.
+     */
+    public void stopPool() {
+        for (int i = 0; i < n; i++) {
+            threads[i].interrupt();
         }
     }
 }

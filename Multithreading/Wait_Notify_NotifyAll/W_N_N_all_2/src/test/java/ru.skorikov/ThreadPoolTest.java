@@ -16,8 +16,11 @@ public class ThreadPoolTest {
     @Test
     public void tryCreateNewThreadPool() {
         ThreadPool threadPool = new ThreadPool();
-        threadPool.add(new Work());
-        threadPool.add(new Work());
-        threadPool.add(new Work());
+        Work work = new Work();
+        for (int i = 0; i < 1000; i++) {
+            threadPool.add(work);
+        }
+        threadPool.startPool();
+        threadPool.stopPool();
     }
 }

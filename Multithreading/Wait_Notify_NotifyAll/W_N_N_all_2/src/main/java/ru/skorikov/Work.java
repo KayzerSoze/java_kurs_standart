@@ -16,13 +16,16 @@ public class Work implements Runnable {
      * Какая то полезная переменная.
      */
     private AtomicInteger j = new AtomicInteger();
+
     //Полезный метод.
     @Override
     public void run() {
         try {
-            Thread.sleep(2000);
+            Thread.sleep(1);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            //Не знаю - можно так- нет? - вместо печати стектрейса остановить поток
+            //e.printStackTrace();
+            Thread.currentThread().interrupt();
         }
         j.incrementAndGet();
         System.out.println("It's work " + j);
