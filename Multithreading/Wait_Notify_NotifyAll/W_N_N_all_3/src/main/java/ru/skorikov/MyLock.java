@@ -62,7 +62,8 @@ public class MyLock {
             lockCount.decrementAndGet();
             if (lockCount.get() == 0) {
                 islock = false;
-                notify();
+                lockThread = null;
+                notifyAll();
             }
         }
     }
