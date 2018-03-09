@@ -10,10 +10,12 @@ import java.util.concurrent.locks.ReentrantLock;
  * @ version: java_kurs_standart
  */
 public class Board {
+
     /**
      * Игровое поле.
      */
     private final ReentrantLock[][] board;
+
     /**
      * Количество героев.
      */
@@ -25,7 +27,7 @@ public class Board {
      * @param boardSize размер (для простоты - квадратный).
      * @param hero      герои.
      */
-    public Board(int boardSize, int hero) {
+    Board(int boardSize, int hero) {
         board = new ReentrantLock[boardSize][boardSize];
         heroes = new Thread[hero];
         for (int i = 0; i < board.length; i++) {
@@ -59,8 +61,8 @@ public class Board {
      * Прибить героев.
      */
     public void stopHeroes() {
-        for (int i = 0; i < heroes.length; i++) {
-            heroes[i].interrupt();
+        for (Thread heroe : heroes) {
+            heroe.interrupt();
         }
     }
 }
