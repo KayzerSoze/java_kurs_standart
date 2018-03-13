@@ -5,7 +5,6 @@ import org.junit.Test;
 
 import java.util.NoSuchElementException;
 
-
 /**
  * Created with IntelliJ IDEA.
  *
@@ -14,6 +13,7 @@ import java.util.NoSuchElementException;
  * @ version: java_kurs_standart
  */
 public class MyNotBlockClassTest {
+
     /**
      * Пробуем добавить данные.
      */
@@ -30,10 +30,9 @@ public class MyNotBlockClassTest {
     /**
      * Пробуем обновть данные.
      *
-     * @throws OptimisticException исключение.
      */
     @Test
-    public void whenUpdateDataThenUpdateModel() throws OptimisticException {
+    public void whenUpdateDataThenUpdateModel() {
         MyNotBlockClass myNotBlockClass = new MyNotBlockClass();
         Model model = new Model("name", "data");
         myNotBlockClass.add(model);
@@ -47,11 +46,10 @@ public class MyNotBlockClassTest {
 
     /**
      * Пробуем двумя пользователями обновить данные.
-     *
-     * @throws OptimisticException исключение.
      */
-    @Test(expected = OptimisticException.class)
-    public void tryGetException() throws OptimisticException {
+    @Test
+    public void tryGetException() {
+
         MyNotBlockClass myNotBlockClass = new MyNotBlockClass();
         Model model = new Model("name", "data");
         myNotBlockClass.add(model);
@@ -63,7 +61,6 @@ public class MyNotBlockClassTest {
         myNotBlockClass.update(0, user1);
         user2.setName("nameUser2");
         myNotBlockClass.update(0, user2);
-
     }
 
     /**

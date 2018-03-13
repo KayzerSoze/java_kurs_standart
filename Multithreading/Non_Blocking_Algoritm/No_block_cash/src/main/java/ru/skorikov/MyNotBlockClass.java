@@ -26,7 +26,7 @@ public class MyNotBlockClass {
     /**
      * Конструктор.
      */
-    public MyNotBlockClass() {
+    MyNotBlockClass() {
         this.map = new ConcurrentHashMap();
     }
 
@@ -44,20 +44,24 @@ public class MyNotBlockClass {
     /**
      * Обновить модель.
      *
-     * @param key ключ.
+     * @param key         ключ.
      * @param updateModel обновленная модель.
-     * @throws OptimisticException исключение.
      */
-    public void update(Integer key, Model updateModel) throws OptimisticException {
-
-        if (map.get(key).getVersion().equals(updateModel.getVersion())) {
-            Integer newVers = map.get(key).getVersion();
-            newVers++;
-            updateModel.setVersion(newVers);
-            map.computeIfPresent(key, (k, model) -> model = updateModel);
-        } else {
-            throw new OptimisticException();
-        }
+    public void update(Integer key, Model updateModel) {
+        map.computeIfPresent(key, (Integer k, Model model) -> {
+            if (map.get(key).getVersion().equals(updateModel.getVersion())) {
+                Integer newVers = map.get(key).getVersion();
+                newVers++;
+                updateModel.setVersion(newVers);
+            } else {
+                try {
+                    throw new OptimisticException();
+                } catch (OptimisticException e) {
+                    e.printStackTrace();
+                }
+            }
+            return updateModel;
+        });
     }
 
     /**
