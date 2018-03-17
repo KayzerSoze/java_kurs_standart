@@ -26,7 +26,7 @@ public class Hero implements Runnable {
      * @param name  имя.
      * @param board поле.
      */
-    public Hero(String name, Board board) {
+    Hero(String name, Board board) {
         this.name = name;
         this.board = board;
     }
@@ -39,71 +39,59 @@ public class Hero implements Runnable {
     /**
      * Пробуем занять начальную позицию.
      *
-     * @return индексы начальной позиция.
+     * @return ячейку с координатами стартовой позиции.
      */
-    private int[][] createPosition() {
-        //Случайные числа для начальной позиции на доске.
-        Random random = new Random();
+    private Cell startPosition() {
+        //стратовая ячейка
+        Cell start = null;
         int boardSize = board.getBoard().length;
-        int[][] position = new int[1][2];
+        Random random = new Random();
         boolean isCreate = false;
-        //Пробуем получть лок случайной ячейки доски.
+        //пока не получим лок ячейки доски
         while (!isCreate) {
-            int i = random.nextInt(boardSize - 1);
-            int j = random.nextInt(boardSize - 1);
-            if (board.getBoard()[i][j].tryLock()) {
-                position[0][0] = i;
-                position[0][1] = j;
+            int x = random.nextInt(boardSize - 1);
+            int y = random.nextInt(boardSize - 1);
+            if (board.getBoard()[x][y].tryLock()) {
+                start = new Cell(x, y);
                 isCreate = true;
             }
         }
-        return position;
+        return start;
     }
 
     /**
      * Генерация случайной клетки.
      *
-     * @param x строка.
-     * @param y столбец.
+     * @param cell стартовая ячейка.
      * @return новая ячейка.
      */
-    private int[][] createRandomCell(int x, int y) {
-        int[][] randomCell = new int[1][2];
+    private Cell createRandomCell(Cell cell) {
+        //Cell randomCell = null;
         //случайное число от 0 до 4
         int nextCell = random.nextInt(5 - 1);
-        int tempX = x;
-        int tempY = y;
+        int tempX = cell.getX();
+        int tempY = cell.getY();
         switch (nextCell) {
             //клетка вверх
             case 0:
-                tempX = x - 1;
-                tempY = y;
+                tempX -= 1;
                 break;
-
             //клетка вправо
             case 1:
-                tempX = x;
-                tempY = y + 1;
+                tempY += 1;
                 break;
-
             //клетка вниз
             case 2:
-                tempX = x + 1;
-                tempY = y;
+                tempX += 1;
                 break;
-
             //клетка влево
             case 3:
-                tempX = x;
-                tempY = y - 1;
+                tempY -= 1;
                 break;
-
             default:
                 break;
         }
-        randomCell[0][0] = tempX;
-        randomCell[0][1] = tempY;
-        return randomCell;
+        return new Cell(tempX, tempY);
     }
 
     /**
@@ -117,22 +105,18 @@ public class Hero implements Runnable {
      * @return конечная позиция.
      * @throws InterruptedException исключение.
      */
-    private int[][] nextStep(int[][] position) throws InterruptedException {
+    private Cell nextStep(Cell position) throws InterruptedException {
         boolean isNext = false;
-        int[][] next = new int[1][2];
-        //строка
-        int x = position[0][0];
-        //столбец
-        int y = position[0][1];
+        Cell next = null;
         //пока не найдем куда ходить
         while (!isNext) {
-            next = createRandomCell(x, y);
+            next = createRandomCell(position);
             //если не вышли за нраницы поля
-            if (next[0][0] >= 0 && next[0][0] < board.getBoard().length - 1
-                    && next[0][1] >= 0 && next[0][1] < board.getBoard().length - 1) {
+            if (next.getX() >= 0 && next.getX() < board.getBoard().length - 1
+                    && next.getY() >= 0 && next.getY() < board.getBoard().length - 1) {
                 //если получилось захватить лок
-                if (board.getBoard()[next[0][0]][next[0][1]].tryLock(500, TimeUnit.MILLISECONDS)) {
-                    board.getBoard()[x][y].unlock();
+                if (board.getBoard()[next.getX()][next.getY()].tryLock(500, TimeUnit.MILLISECONDS)) {
+                    board.getBoard()[position.getX()][position.getY()].unlock();
                     isNext = true;
                 }
             }
@@ -149,7 +133,7 @@ public class Hero implements Runnable {
     public synchronized void run() {
         Thread.currentThread().setName(name);
         //Получаем позицию
-        int[][] startPosition = createPosition();
+        Cell startPosition = startPosition();
         //пока не прервали.
         //спим секунду
         try {
@@ -157,7 +141,7 @@ public class Hero implements Runnable {
                 Thread.sleep(1000);
                 startPosition = nextStep(startPosition);
                 System.out.print(Thread.currentThread().getName());
-                System.out.println(" Cell " + startPosition[0][0] + startPosition[0][1]);
+                System.out.println(" Cell " + startPosition.getX() + startPosition.getY());
             }
         } catch (InterruptedException e) {
             System.out.println(Thread.currentThread().getName() + " отмучился");

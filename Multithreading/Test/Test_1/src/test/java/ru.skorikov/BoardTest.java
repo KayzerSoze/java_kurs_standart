@@ -18,7 +18,7 @@ public class BoardTest {
         Board board = new Board(6, 3);
         board.startHeroes();
         try {
-            Thread.sleep(2000);
+            Thread.sleep(20000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
