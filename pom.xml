@@ -9,6 +9,7 @@
     <modules>
         <module>Collections_Pro</module>
         <module>Multithreading</module>
+        <module>SQL-JDBC</module>
     </modules>
 
     <properties>

@@ -1,0 +1,20 @@
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>SQL-JDBC</artifactId>
+    <version>1.0</version>
+    <packaging>pom</packaging>
+    <parent>
+        <groupId>ru.skorikov</groupId>
+        <artifactId>java_kurs_standart</artifactId>
+        <version>2.0</version>
+    </parent>
+
+    <modules>
+        <module>CreateUpdateInsert</module>
+        <module>Query</module>
+        <module>Outer_join</module>
+        <module>JDBC</module>
+        <module>TestSQLJDBC</module>
+    </modules>
+
+</project>

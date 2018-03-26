@@ -15,6 +15,7 @@ public class Hero implements Runnable {
      * Имя героя.
      */
     private final String name;
+
     /**
      * Поле для героя.
      */

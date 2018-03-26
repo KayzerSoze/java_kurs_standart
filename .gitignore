@@ -16,3 +16,6 @@ hs_err_pid*
 /target/
 /org/
 /Tasks.txt
+Будет удалено Multithreading/Test/Test_1/target/
+Будет удалено Multithreading/Test/target/
+Будет удалено SQL-JDBC/
