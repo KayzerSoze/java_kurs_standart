@@ -10,5 +10,6 @@
     </parent>
     <modules>
         <module>Test_1</module>
+	    <module>Test_2</module>
     </modules>
 </project>
