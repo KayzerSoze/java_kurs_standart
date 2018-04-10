@@ -21,7 +21,7 @@ public class Cell extends ReentrantLock {
     private final int y;
 
     /**
-     * Создатель доски.
+     * Создатель ячейки.
      *
      * @param x координата по горизонтали.
      * @param y координата по вертикали.
