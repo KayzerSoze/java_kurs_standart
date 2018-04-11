@@ -1,7 +1,6 @@
 package ru.skorikov;
 
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created with IntelliJ IDEA.
@@ -97,9 +96,10 @@ public class Monster extends Hero {
             //если не вышли за нраницы поля
             if (next.getX() >= 0 && next.getX() < board.getBoard().length - 1
                     && next.getY() >= 0 && next.getY() < board.getBoard().length - 1) {
-                //Пробуем завхватить лок в течении 0.5 сек
-                if (board.getBoard()[next.getX()][next.getY()].tryLock(500, TimeUnit.MILLISECONDS)) {
-                    board.getBoard()[position.getX()][position.getY()].unlock();
+                //Пробуем захватить лок в течении 0.5 сек
+                if (board.lockCellForNextStep(next, 500)) {
+                    //Разлочим старую позицию
+                    board.unlockPreviousStep(position);
                     isNext = true;
                 }
             }

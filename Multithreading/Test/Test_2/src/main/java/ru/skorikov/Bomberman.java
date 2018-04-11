@@ -85,14 +85,15 @@ public class Bomberman extends Hero {
      * @return новая позиция.
      */
     @Override
-    public Cell nextStep(Cell position) {
+    public Cell nextStep(Cell position) throws InterruptedException {
         Cell next = createNewCell(position);
         //если не вышли за нраницы поля
         if (next.getX() >= 0 && next.getX() < board.getBoard().length - 1
                 && next.getY() >= 0 && next.getY() < board.getBoard().length - 1) {
             //Пробуем завхватить лок в течении 0.5 сек
-            if (board.getBoard()[next.getX()][next.getY()].tryLock()) {
-                board.getBoard()[position.getX()][position.getY()].unlock();
+            if (board.lockCellForNextStep(next, 500)) {
+                //Разлочим старую позицию
+                board.unlockPreviousStep(position);
             }
         }
         return next;
@@ -108,7 +109,11 @@ public class Bomberman extends Hero {
         Cell startPosition = startPosition();
         //пока не прервали.
         while (!Thread.currentThread().isInterrupted()) {
-            startPosition = nextStep(startPosition);
+            try {
+                startPosition = nextStep(startPosition);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             System.out.print(Thread.currentThread().getName());
             System.out.println(" Cell " + startPosition.getX() + startPosition.getY());
         }

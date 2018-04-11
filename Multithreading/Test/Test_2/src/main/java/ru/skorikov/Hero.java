@@ -47,9 +47,15 @@ public abstract class Hero implements Runnable {
         while (!isCreate) {
             int x = random.nextInt(boardSize - 1);
             int y = random.nextInt(boardSize - 1);
-            if (board.getBoard()[x][y].tryLock()) {
-                start = new Cell(x, y);
-                isCreate = true;
+            start = new Cell(x, y);
+            //Пробуем лочить ячейку для следующего хода.
+            try {
+                if (board.lockCellForNextStep(start, 0)) {
+                    start = new Cell(x, y);
+                    isCreate = true;
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
         return start;

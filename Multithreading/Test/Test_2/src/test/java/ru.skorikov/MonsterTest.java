@@ -11,12 +11,14 @@ import org.junit.Test;
  */
 public class MonsterTest {
     /**
-     * Создадим героя и запустим его.
+     * Создадим монстра.
+     * @throws InterruptedException exception
      */
     @Test
-    public void tryCreateHero() {
+    public void tryCreateHero() throws InterruptedException {
         Board board = new Board(10);
         Monster monster = new Monster("Monstr", board);
+        monster.nextStep(monster.createNewCell(monster.startPosition()));
 
     }
 }
