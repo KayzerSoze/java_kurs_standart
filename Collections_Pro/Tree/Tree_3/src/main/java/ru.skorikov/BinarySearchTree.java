@@ -5,11 +5,9 @@ import java.util.NoSuchElementException;
 /**
  * Created with IntelliJ IDEA.
  *
- * @param <E> параметр.
- * @ author: Alex_Skorikov.
- * @ date: 27.11.17
- * @ version: java_kurs_standart
- * 3. Собственная реализация Binary search tree
+ * @author:AlexSkorikov.
+ * @version:java_kurs_standart
+ * @param <E> type
  */
 public class BinarySearchTree<E> implements Comparable<E> {
     /**

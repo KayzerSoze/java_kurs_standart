@@ -96,3 +96,8 @@ JDBC/Outer_join/target/
 Будет удалено SQL-JDBC/CreateUpdateInsert/1.cu/src/test/
 Будет удалено SQL-JDBC/Outer_join
 /1.oj/src/
+Будет удалено SQL-JDBC/CreateUpdateInsert/1.cu/src/main/java/
+Будет удалено SQL-JDBC/Outer_join/1.oj/src/main/java/
+Будет удалено SQL-JDBC/Outer_join/1.oj/src/test/
+Будет удалено SQL-JDBC/Query/1.q/src/main/java/
+Будет удалено SQL-JDBC/Query/1.q/src/test/

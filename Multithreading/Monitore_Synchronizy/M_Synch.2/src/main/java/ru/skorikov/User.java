@@ -3,11 +3,9 @@ package ru.skorikov;
 /**
  * Created with IntelliJ IDEA.
  *
- * @ author: Alex_Skorikov.
- * @ date: 09.01.18
- * @ version: java_kurs_standart
+ * @author:AlexSkorikov.
+ * @version:java_kurs_standart
  *
- * Класс пользователь.
  */
 public class User {
     /**

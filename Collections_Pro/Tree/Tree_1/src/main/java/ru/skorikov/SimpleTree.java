@@ -3,11 +3,9 @@ package ru.skorikov;
 /**
  * Created with IntelliJ IDEA.
  *
- * @ author: Alex_Skorikov.
- * @ date: 10.11.17
- * @ version: java_kurs_standart
+ * @author:AlexSkorikov.
+ * @version:java_kurs_standart
  * @param <E> параметр.
- * 1. Создать элементарную структуру дерева
  */
 public interface SimpleTree<E extends Comparable<E>> extends Iterable<E> {
     /**

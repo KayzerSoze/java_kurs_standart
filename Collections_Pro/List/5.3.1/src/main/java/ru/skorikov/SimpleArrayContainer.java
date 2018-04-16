@@ -7,12 +7,9 @@ import java.util.NoSuchElementException;
 /**
  * Created with IntelliJ IDEA.
  *
- * @param <E> параметр класса.
- *
- * Создать динамический список на базе массива.
- * @ author: Alex_Skorikov.
- * @ date: 10.01.18
- * @ version: java_kurs_standart
+ * @author:AlexSkorikov.
+ * @version:java_kurs_standart
+ * @param <E> type
  */
 
 public class SimpleArrayContainer<E> implements Iterable<E> {
@@ -79,6 +76,7 @@ public class SimpleArrayContainer<E> implements Iterable<E> {
             public boolean hasNext() {
                 return iterIndex < container.length;
             }
+
             @Override
             public E next() {
                 if (hasNext()) {

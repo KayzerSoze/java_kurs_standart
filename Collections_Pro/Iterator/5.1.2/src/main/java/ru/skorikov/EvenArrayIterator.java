@@ -6,10 +6,8 @@ import java.util.NoSuchElementException;
 /**
  * Created with IntelliJ IDEA.
  *
- * @ author: Alex_Skorikov.
- * @ date: 27.09.17
- * @ version: java_kurs_standart
- * 5.1.2. Создать итератор четные числа.
+ * @author:AlexSkorikov.
+ * @version:java_kurs_standart
  */
 public class EvenArrayIterator implements Iterator {
     /**

@@ -5,10 +5,8 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  * Created with IntelliJ IDEA.
  *
- * @ author: Alex_Skorikov.
- * @ date: 17.03.18
- * @ version: java_kurs_standart
- * Класс ячейка доски.
+ * @author:AlexSkorikov.
+ * @version:java_kurs_standart
  */
 public class Cell extends ReentrantLock {
     /**

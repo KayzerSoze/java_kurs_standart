@@ -5,11 +5,8 @@ import java.util.Random;
 /**
  * Created with IntelliJ IDEA.
  *
- * @ author: Alex_Skorikov.
- * @ date: 05.03.18
- * @ version: java_kurs_standart
- * <p>
- * Класс монстр расширяющий Hero.
+ * @author:AlexSkorikov.
+ * @version:java_kurs_standart
  */
 public class Monster extends Hero {
 

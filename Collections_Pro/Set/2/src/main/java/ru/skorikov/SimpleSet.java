@@ -6,11 +6,10 @@ import java.util.NoSuchElementException;
 /**
  * Created with IntelliJ IDEA.
  *
+ * @author:AlexSkorikov.
+ * @version:java_kurs_standart
+ *
  * @param <E> параметр класса.
- *            Set реализованный на связном списке.
- * @ author: Alex_Skorikov.
- * @ date: 01.11.17
- * @ version: java_kurs_standart
  */
 public class SimpleSet<E> implements Iterator<E> {
 

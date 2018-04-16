@@ -6,9 +6,8 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created with IntelliJ IDEA.
  *
- * @ author: Alex_Skorikov.
- * @ date: 05.03.18
- * @ version: java_kurs_standart
+ * @author:AlexSkorikov.
+ * @version:java_kurs_standart
  */
 public class Hero implements Runnable {
     /**

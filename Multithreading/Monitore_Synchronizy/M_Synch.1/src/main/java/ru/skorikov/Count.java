@@ -6,10 +6,8 @@ import net.jcip.annotations.ThreadSafe;
 /**
  * Created with IntelliJ IDEA.
  *
- * @ author: Alex_Skorikov.
- * @ date: 08.01.18
- * @ version: java_kurs_standart
- * Класс увеличивает внутренний счетчик на 1 и возвращает его.
+ * @author:AlexSkorikov.
+ * @version:java_kurs_standart
  */
 @ThreadSafe
 class Count {

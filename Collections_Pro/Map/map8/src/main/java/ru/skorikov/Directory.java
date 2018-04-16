@@ -6,23 +6,10 @@ import java.util.NoSuchElementException;
 /**
  * Created with IntelliJ IDEA.
  *
+ * @author:AlexSkorikov.
+ * @version:java_kurs_standart
  * @param <K> key.
  * @param <V> value.
- * @ author: Alex_Skorikov.
- * @ date: 08.11.17
- * @ version: java_kurs_standart
- * 8. Реализовать собственную структуру данных - справочник.
- *
- *
- *
- *           ///////////
-
-хорошо, задачу можно закрывать.
-
-Но на будущее, раз уж есть тип Element, то лучше массив объявлять соответствующего типа. И делать его параметризованным.
-
-
-
  */
 public class Directory<K, V> implements Iterator {
     /**

@@ -5,10 +5,9 @@ import java.util.Iterator;
 /**
  * Created with IntelliJ IDEA.
  *
- * @ author: Alex_Skorikov.
- * @ date: 28.09.17
- * @ version: java_kurs_standart
- * 5.1.4. Создать convert(Iterator<Iterator>)
+ * @author:AlexSkorikov.
+ * @version:java_kurs_standart
+ *
  */
 public class ConvertIterator {
 

@@ -7,11 +7,8 @@ import java.util.List;
 /**
  * Created with IntelliJ IDEA.
  *
- * @ author: Alex_Skorikov.
- * @ date: 19.12.17
- * @ version: java_kurs_standart
- *
- * Состоят ли слова из одинаковых букв.
+ * @author:AlexSkorikov.
+ * @version:java_kurs_standart
  */
 public class TwoWords {
     /**

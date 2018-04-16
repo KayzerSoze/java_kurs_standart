@@ -6,10 +6,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * Created with IntelliJ IDEA.
  *
- * @ author: Alex_Skorikov.
- * @ date: 07.02.18
- * @ version:
- * Класс работа.
+ * @author:AlexSkorikov.
+ * @version:java_kurs_standart
  */
 public class Work implements Runnable {
     /**

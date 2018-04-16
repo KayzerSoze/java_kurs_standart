@@ -8,12 +8,9 @@ import java.util.NoSuchElementException;
 /**
  * Created with IntelliJ IDEA.
  *
+ * @author:AlexSkorikov.
+ * @version:java_kurs_standart
  * @param <E> параметр класса.
- *            <p>
- *            Реализовать коллекцию Set на массиве
- * @ author: Alex_Skorikov.
- * @ date: 01.11.17
- * @ version: java_kurs_standart
  */
 
 

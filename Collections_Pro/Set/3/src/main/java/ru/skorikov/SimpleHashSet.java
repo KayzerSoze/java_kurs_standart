@@ -3,11 +3,9 @@ package ru.skorikov;
 /**
  * Created with IntelliJ IDEA.
  *
+ * @author:AlexSkorikov.
+ * @version:java_kurs_standart
  * @param <E> параметр класса.
- *            3. Реализовать коллекцию типа Set на базе хэш-таблицы
- * @ author: Alex_Skorikov.
- * @ date: 02.11.17
- * @ version: java_kurs_standart
  */
 public class SimpleHashSet<E> {
 

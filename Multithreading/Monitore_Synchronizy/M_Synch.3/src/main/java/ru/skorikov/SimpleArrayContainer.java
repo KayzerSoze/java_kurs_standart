@@ -11,12 +11,9 @@ import java.util.NoSuchElementException;
 /**
  * Created with IntelliJ IDEA.
  *
+ * @author:AlexSkorikov.
+ * @version:java_kurs_standart
  * @param <E> параметр класса.
- *            <p>
- *            Создать динамический список на базе массива.
- * @ author: Alex_Skorikov.
- * @ date: 23.10.17
- * @ version: java_kurs_standart
  */
 @ThreadSafe
 public class SimpleArrayContainer<E> implements Iterable<E> {

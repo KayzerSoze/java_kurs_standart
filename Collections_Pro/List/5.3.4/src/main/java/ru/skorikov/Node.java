@@ -3,12 +3,9 @@ package ru.skorikov;
 /**
  * Created with IntelliJ IDEA.
  *
+ * @author:AlexSkorikov.
+ * @version:java_kurs_standart
  * @param <T> параметр класса.
- *            <p>
- *            5.3.4. Задан связанный список. Определить цикличность.
- * @ author: Alex_Skorikov.
- * @ date: 29.10.17
- * @ version: java_kurs_standart
  */
 public class Node<T> {
 

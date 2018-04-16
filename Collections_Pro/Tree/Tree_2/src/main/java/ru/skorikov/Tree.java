@@ -7,11 +7,9 @@ import java.util.List;
 /**
  * Created with IntelliJ IDEA.
  *
+ * @author:AlexSkorikov.
+ * @version:java_kurs_standart
  * @param <E> параметр.
- *            2. Добавить метод boolean isBinary()
- * @ author: Alex_Skorikov.
- * @ date: 10.11.17
- * @ version: java_kurs_standart
  */
 
 class Tree<E extends Comparable<E>> implements SimpleTree<E> {

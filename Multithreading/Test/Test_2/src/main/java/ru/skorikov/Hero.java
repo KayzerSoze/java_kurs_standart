@@ -5,10 +5,8 @@ import java.util.Random;
 /**
  * Created with IntelliJ IDEA.
  *
- * @ author: Alex_Skorikov.
- * @ date: 28.03.18
- * @ version: java_kurs_standart
- * Абстрактный класс герой игры.
+ * @author:AlexSkorikov.
+ * @version:java_kurs_standart
  */
 public abstract class Hero implements Runnable {
     /**

@@ -3,10 +3,8 @@ package ru.skorikov;
 /**
  * Created with IntelliJ IDEA.
  *
- * @ author: Alex_Skorikov.
- * @ date: 04.12.17
- * @ version: java_kurs_standart
- * Класс ордер.
+ * @author:AlexSkorikov.
+ * @version:java_kurs_standart
  */
 public class Order {
     /**

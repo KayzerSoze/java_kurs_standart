@@ -3,12 +3,9 @@ package ru.skorikov;
 /**
  * Created with IntelliJ IDEA.
  *
- * @param <T> Параметр.
- * @ author: Alex_Skorikov.
- * @ date: 09.10.17
- * @ version: java_kurs_standart
- * 5.2.2. Реализовать Store<T extends Base>.
- * Параметризованный класс.
+ * @author:AlexSkorikov.
+ * @version:java_kurs_standart
+ * @param <T> Параметр..
  */
 public class SimpleArray<T>  {
 

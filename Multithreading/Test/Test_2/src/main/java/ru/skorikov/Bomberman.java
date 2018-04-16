@@ -3,11 +3,8 @@ package ru.skorikov;
 /**
  * Created with IntelliJ IDEA.
  *
- * @ author: Alex_Skorikov.
- * @ date: 28.03.18
- * @ version: java_kurs_standart
- * <p>
- * Класс Бомбермен расширяющий класс Hero.
+ * @author:AlexSkorikov.
+ * @version:java_kurs_standart
  */
 public class Bomberman extends Hero {
 

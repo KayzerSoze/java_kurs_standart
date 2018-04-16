@@ -2,13 +2,11 @@ package ru.skorikov;
 
 import java.util.HashMap;
 import java.util.Map;
-
 /**
  * Created with IntelliJ IDEA.
  *
- * @ author: Alex_Skorikov.
- * @ date: 07.11.17
- * @ version: java_kurs_standart
+ * @author:AlexSkorikov.
+ * @version:java_kurs_standart
  */
 public class UserOverrideEqualsAndHash {
     /**

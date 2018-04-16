@@ -11,9 +11,8 @@ import java.util.NoSuchElementException;
 /**
  * Created with IntelliJ IDEA.
  *
- * @ author: Alex_Skorikov.
- * @ date: 28.11.17
- * @ version: java_kurs_standart
+ * @author:AlexSkorikov.
+ * @version:java_kurs_standart
  */
 public class BinarySearchTreeTest {
     /**

@@ -4,12 +4,9 @@ package ru.skorikov;
 /**
  * Created with IntelliJ IDEA.
  *
+ * @author:AlexSkorikov.
+ * @version:java_kurs_standart
  * @param <T> Параметр.
- * @ author: Alex_Skorikov.
- * @ date: 09.10.17
- * @ version: java_kurs_standart
- * 5.2.1. Реализовать SimpleArray<T>.
- * Параметризованный класс.
  */
 public class SimpleArray<T> {
 

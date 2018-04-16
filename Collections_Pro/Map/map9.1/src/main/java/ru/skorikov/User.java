@@ -6,9 +6,8 @@ import java.util.Date;
 /**
  * Created with IntelliJ IDEA.
  *
- * @ author: Alex_Skorikov.
- * @ date: 04.11.17
- * @ version: java_kurs_standart
+ * @author:AlexSkorikov.
+ * @version:java_kurs_standart
  * 10. Рассказать и продемонстрировать как переопределяют метод hashCode..
  * Сделаем на примере этого класса.
  */
@@ -154,7 +153,7 @@ public class User {
      * 1. Присвойте результирующей переменной (result) некоторое ненулевое простое число (например, 17)
      * 2. Если поле value имеет тип boolean, вычислите (value ? О : 1)
      * 3. Если поле value имеет тип byte, char, short или int, вычислите (int)value
-     * 4. Если поле value имеет тип long, вычислите (int)(value - (value >>> 32))
+     * 4. Если поле value имеет тип long, вычислите (int)(value - (value больше 32))
      * 5. Если поле value имеет тип float, вычислите Float.floatToIntBits(value)
      * 6. Если поле value имеет тип double, вычислите Double.doubleToLongBits(value), а затем преобразуйте полученное
      * значение, как указано в п.4

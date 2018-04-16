@@ -4,13 +4,8 @@ package ru.skorikov;
 /**
  * Created with IntelliJ IDEA.
  *
- * @ author: Alex_Skorikov.
- * @ date: 22.10.17
- * @ version: java_kurs_standart
- * Абстрактный класс.
- * Реализует интерфейс Store.
- * Имеет реализованные методы для
- * избежания дублирования кода в классах- наследниках.
+ * @author:AlexSkorikov.
+ * @version:java_kurs_standart
  * @param <T> параметр.
  */
 

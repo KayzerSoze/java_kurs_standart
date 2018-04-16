@@ -10,11 +10,8 @@ import java.util.NoSuchElementException;
 /**
  * Created with IntelliJ IDEA.
  *
- * @ author: Alex_Skorikov.
- * @ date: 09.01.18
- * @ version: java_kurs_standart
- * <p>
- * Класс структура данных для хранение пользователей.
+ * @author:AlexSkorikov.
+ * @version:java_kurs_standart
  */
 @ThreadSafe
 class UserStorage {

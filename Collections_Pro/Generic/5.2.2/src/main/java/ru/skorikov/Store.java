@@ -3,11 +3,9 @@ package ru.skorikov;
 /**
  * Created with IntelliJ IDEA.
  *
+ * @author:AlexSkorikov.
+ * @version:java_kurs_standart
  * @param <T> Параметр.
- * @ author: Alex_Skorikov.
- * @ date: 09.10.17
- * @ version: java_kurs_standart
- * Интерфейс Store парметризованный классом Base и наследниками.
  */
 public interface Store<T extends Base> {
 

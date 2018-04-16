@@ -6,11 +6,8 @@ import java.util.Date;
 /**
  * Created with IntelliJ IDEA.
  *
- * @ author: Alex_Skorikov.
- * @ date: 04.11.17
- * @ version: java_kurs_standart
- * 9. Рассказать и продемонстрировать как переопределяют метод equals.
- * Сделаем на примере этого класса.
+ * @author:AlexSkorikov.
+ * @version:java_kurs_standart
  */
 public class User {
     /**

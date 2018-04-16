@@ -6,12 +6,8 @@ import java.util.NoSuchElementException;
 /**
  * Created with IntelliJ IDEA.
  *
- * @ author: Alex_Skorikov.
- * @ date: 27.09.17
- * @ version: java_kurs_standart
- * 5.1.3. Создать итератор простые числа.
- * Что бы не писать алгоритм проверяющий принадлежит ли число простым числам,
- * метод hasNext проверяет есть ли число в массиве простых чисел.
+ * @author:AlexSkorikov.
+ * @version:java_kurs_standart
  */
 public class SimpleNumberIterator implements Iterator {
     /**

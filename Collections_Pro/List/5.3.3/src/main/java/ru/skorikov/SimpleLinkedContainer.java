@@ -6,11 +6,9 @@ import java.util.NoSuchElementException;
 /**
  * Created with IntelliJ IDEA.
  *
+ * @author:AlexSkorikov.
+ * @version:java_kurs_standart
  * @param <E> параметр класса.
- *            5.3.2. Создать контейнер на базе связанного списка
- * @ author: Alex_Skorikov.
- * @ date: 23.10.17
- * @ version: java_kurs_standart
  */
 public class SimpleLinkedContainer<E> implements Iterable<E> {
 

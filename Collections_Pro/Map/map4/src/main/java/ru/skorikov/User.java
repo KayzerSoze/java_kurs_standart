@@ -5,10 +5,8 @@ import java.util.Calendar;
 /**
  * Created with IntelliJ IDEA.
  *
- * @ author: Alex_Skorikov.
- * @ date: 04.11.17
- * @ version: java_kurs_standart
- * 1. Создать модель User
+ * @author:AlexSkorikov.
+ * @version:java_kurs_standart
  */
 public class User {
     /**

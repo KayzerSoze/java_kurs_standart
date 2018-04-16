@@ -14,11 +14,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * Created with IntelliJ IDEA.
  *
- * @ author: Alex_Skorikov.
- * @ date: 15.01.18
- * @ version: java_kurs_standart
- * <p>
- * Осуществлять обход файловой системы и поиск заданного текста в файловой системе.
+ * @author:AlexSkorikov.
+ * @version:java_kurs_standart
  */
 @ThreadSafe
 public class ParallerSearch {
