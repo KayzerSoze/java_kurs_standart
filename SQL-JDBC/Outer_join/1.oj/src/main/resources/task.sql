@@ -5,30 +5,31 @@
 */
 --Вывести все машины.
 
-select название, модель From Машины;
+select car_name, model From Cars;
 
 --Вывести все неиспользуемые детали.
 
-SELECT кузов as Неиспользуемые_детали FROM Кузова 
-EXCEPT 
-SELECT кузов FROM Комплектующие_детали JOIN Кузова ON Комплектующие_детали.кузов_компл = Кузова.кузов
 
-union 
-SELECT двигатель FROM Двигатели
-EXCEPT 
-SELECT двигатель FROM Комплектующие_детали JOIN Двигатели ON Комплектующие_детали.двигатель_компл = Двигатели.двигатель
+SELECT body as Неиспользуемые_детали FROM Car_body
+EXCEPT
+SELECT body FROM Equipment JOIN Car_body ON Equipment.car_body = Car_body.body
 
 union
-SELECT дифференциал FROM Дифференциал 
-EXCEPT 
-SELECT дифференциал_транссм FROM Трансмиссия JOIN Дифференциал ON Трансмиссия.дифференциал_транссм = Дифференциал.дифференциал
+SELECT Engine.engine FROM Engine
+EXCEPT
+SELECT Equipment.engine FROM Equipment JOIN Engine ON Equipment.engine = Engine.engine
 
 union
-SELECT сцепление FROM Сцепление 
-EXCEPT 
-SELECT сцепление_транссм FROM Трансмиссия JOIN Сцепление ON Трансмиссия.сцепление_транссм = Сцепление.сцепление
+SELECT differential FROM Differential
+EXCEPT
+SELECT differential_transm FROM Transmission JOIN Differential ON Transmission.differential_transm = Differential.differential
 
 union
-SELECT тип_коробки FROM Коробки_передач 
-EXCEPT 
-SELECT коробка_трансм FROM Трансмиссия JOIN Коробки_передач ON Трансмиссия.коробка_трансм = Коробки_передач.тип_коробки;
+SELECT clutch FROM Clutch
+EXCEPT
+SELECT clutch_transm FROM Transmission JOIN Clutch ON Transmission.clutch_transm = Clutch.clutch
+
+union
+SELECT gearbox FROM Gearbox
+EXCEPT
+SELECT gearbox_transm FROM Transmission JOIN Gearbox ON Transmission.gearbox_transm = Gearbox.gearbox;
