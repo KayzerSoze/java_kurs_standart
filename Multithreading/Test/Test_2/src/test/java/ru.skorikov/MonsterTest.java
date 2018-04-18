@@ -18,7 +18,12 @@ public class MonsterTest {
     public void tryCreateHero() throws InterruptedException {
         Board board = new Board(10);
         Monster monster = new Monster("Monstr", board);
-        monster.nextStep(monster.createNewCell(monster.startPosition()));
+        Thread monstr = new Thread(monster);
+        monstr.start();
+
+        Thread.sleep(100);
+        monstr.interrupt();
+
 
     }
 }
